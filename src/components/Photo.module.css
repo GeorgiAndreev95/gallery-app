@@ -1,0 +1,15 @@
+.imageContainer {
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+.author {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.author img {
+    border-radius: 50%;
+}
