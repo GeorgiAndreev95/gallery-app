@@ -1,3 +1,4 @@
+import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
 
@@ -8,11 +9,12 @@ import { setSearchValue, setResultPhotos } from "../../slices/photosSlice";
 function Header({ isVisible }) {
     const { t } = useTranslation();
     const dispatch = useDispatch();
+    const inputRef = useRef();
 
     const submitHandler = (event) => {
         event.preventDefault();
-        const searchValue = event.target.search.value;
-        dispatch(setResultPhotos([]));
+        const searchValue = inputRef.current.value;
+
         dispatch(setSearchValue(searchValue));
     };
 
@@ -55,6 +57,7 @@ function Header({ isVisible }) {
                     className={classes.searchBox}
                     autoComplete="off"
                     required
+                    ref={inputRef}
                 />
             </form>
 

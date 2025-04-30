@@ -1,11 +1,11 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getListPhotos, getSearchPhotos } from "../services/galleryService";
 import { setListPhotos, setResultPhotos } from "../slices/photosSlice";
 import Photo from "../components/PhotoComponent/Photo";
 
-function Home() {
+const Home = React.memo(function Home() {
     const dispatch = useDispatch();
 
     const photos = useSelector((state) => state.photos.listPhotos);
@@ -38,6 +38,6 @@ function Home() {
             <Photo photos={searchValue ? resultPhotos : photos} />
         </>
     );
-}
+});
 
 export default Home;

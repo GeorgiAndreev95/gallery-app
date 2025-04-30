@@ -38,7 +38,7 @@
     background: #e7e7e7;
     border: 1px solid #e7e7e7;
     border-radius: 18px;
-    width: 16rem;
+    width: 75%;
     margin-left: 1rem;
     margin-right: 2rem;
 }
@@ -57,7 +57,7 @@
     padding: 0.5rem;
     font-size: 1rem;
     border: none;
-    width: 200px;
+    width: 75%;
     background: #e7e7e7;
 }
 
