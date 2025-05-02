@@ -1,8 +1,8 @@
 import axiosInstance from "../axiosInstance";
 
-export const getListPhotos = async () => {
+export const getListPhotos = async (page) => {
     try {
-        const { data } = await axiosInstance.get("/photos");
+        const { data } = await axiosInstance.get(`/photos?page=${page}`);
 
         return data;
     } catch (error) {
@@ -11,10 +11,10 @@ export const getListPhotos = async () => {
     }
 };
 
-export const getSearchPhotos = async (query) => {
+export const getSearchPhotos = async (query, page) => {
     try {
         const { data } = await axiosInstance.get(
-            `/search/photos?page=1&per_page=21&query=${query}`
+            `/search/photos?page=${page}&per_page=20&query=${query}`
         );
 
         return data;

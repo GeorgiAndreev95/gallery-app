@@ -4,6 +4,7 @@ const initialState = {
     listPhotos: [],
     resultPhotos: [],
     searchValue: "",
+    currentPage: 1,
 };
 
 export const photosSlice = createSlice({
@@ -19,10 +20,17 @@ export const photosSlice = createSlice({
         setSearchValue: (state, action) => {
             state.searchValue = action.payload;
         },
+        setCurrentPage: (state, action) => {
+            state.currentPage = action.payload;
+        },
     },
 });
 
-export const { setListPhotos, setResultPhotos, setSearchValue } =
-    photosSlice.actions;
+export const {
+    setListPhotos,
+    setResultPhotos,
+    setSearchValue,
+    setCurrentPage,
+} = photosSlice.actions;
 
 export default photosSlice.reducer;
