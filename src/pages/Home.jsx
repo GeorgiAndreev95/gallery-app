@@ -63,6 +63,7 @@ const Home = React.memo(function Home() {
             ) : (
                 <Photo photos={photosResponse} />
             )}
+
             <PageSelect />
         </>
     );

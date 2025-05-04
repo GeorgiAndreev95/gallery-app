@@ -19,3 +19,21 @@
     align-self: center;
     font-weight: 500;
 }
+
+.mainImage,
+.author img {
+    background-color: #e7e7e7;
+    animation: backgroundPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        background-color: #e7e7e7;
+    }
+    50% {
+        background-color: #d0d0d0;
+    }
+    100% {
+        background-color: #e7e7e7;
+    }
+}
