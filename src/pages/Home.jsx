@@ -13,7 +13,7 @@ import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 
 const Home = React.memo(function Home() {
     const dispatch = useDispatch();
-    const [isLoading, setIsLoading] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const photos = useSelector((state) => state.photos.listPhotos);
     const resultPhotos = useSelector((state) => state.photos.resultPhotos);
@@ -34,6 +34,8 @@ const Home = React.memo(function Home() {
                     );
                     dispatch(setResultPhotos(searchPhotos.results));
                 }
+            } catch (error) {
+                console.error("Error fetching photos:", error);
             } finally {
                 setIsLoading(false);
             }
@@ -57,9 +59,11 @@ const Home = React.memo(function Home() {
     return (
         <>
             {isLoading ? (
-                photosResponse.map((photo) => (
-                    <SkeletonLoading key={photo.id} />
-                ))
+                <div>
+                    {Array.from({ length: 10 }).map((_, index) => (
+                        <SkeletonLoading key={index} />
+                    ))}
+                </div>
             ) : (
                 <Photo photos={photosResponse} />
             )}

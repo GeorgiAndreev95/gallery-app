@@ -21,6 +21,7 @@ function Header({ isVisible }) {
     const clickHandler = () => {
         dispatch(setResultPhotos([]));
         dispatch(setSearchValue(""));
+        inputRef.current.value = "";
     };
 
     return (
