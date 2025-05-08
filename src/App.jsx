@@ -1,10 +1,11 @@
 import { useState, useEffect } from "react";
-import { Outlet } from "react-router";
+import { Outlet, Routes, Route } from "react-router";
 
 import Home from "./pages/Home";
 import Header from "./components/Header/Header";
+import PhotoDetails from "./pages/PhotoDetails";
 
-function App() {
+function Layout() {
     const [showHeader, setShowHeader] = useState(true);
     const [lastScrollY, setLastScrollY] = useState(0);
     const [scrolling, setScrolling] = useState(false);
@@ -45,9 +46,19 @@ function App() {
     return (
         <>
             <Header isVisible={showHeader} />
-            <Home />
             <Outlet />
         </>
+    );
+}
+
+function App() {
+    return (
+        <Routes>
+            <Route element={<Layout />}>
+                <Route path="/" element={<Home />} />
+                <Route path="details/:id" element={<PhotoDetails />} />
+            </Route>
+        </Routes>
     );
 }
 

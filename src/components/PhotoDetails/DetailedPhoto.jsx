@@ -1,22 +1,12 @@
 import { useState } from "react";
-import { useNavigate } from "react-router";
-import { useDispatch } from "react-redux";
 
-import classes from "./Photo.module.css";
-import BlurHashImage from "./BlurHashImage";
-import { setResultPhoto } from "../../slices/photosSlice";
+import classes from "./DetailedPhoto.module.css";
+import BlurHashImage from "../PhotoComponent/BlurHashImage";
 
-function Photo({ photos }) {
+function DetailedPhoto({ photo }) {
     const [isLoaded, setIsLoaded] = useState(false);
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
 
-    const handleClick = (id) => {
-        dispatch(setResultPhoto({}));
-        navigate(`/details/${id}`);
-    };
-
-    return photos.map((photo) => (
+    return (
         <div
             key={photo.id}
             className={classes.imageContainer}
@@ -60,27 +50,20 @@ function Photo({ photos }) {
                 ${photo.urls.regular} 1080w,
                 ${photo.urls.full} 1920w
             `}
-                    //     sizes="(max-width: 480px) 100vw,
-                    //    (max-width: 768px) 80vw,
-                    //    (max-width: 1200px) 60vw,
-                    //    1200px"
                     alt={photo.alt_description || "Photo"}
                     onLoad={() => setIsLoaded(true)}
                     style={{
                         width: "100%",
                         height: "100%",
-                        // objectFit: "cover",
-                        // position: "absolute",
                         inset: 0,
                         opacity: isLoaded ? 1 : 0,
                         transition: "opacity 0.4s ease-in-out",
                         zIndex: 2,
                     }}
-                    onClick={() => handleClick(photo.id)}
                 />
             </div>
         </div>
-    ));
+    );
 }
 
-export default Photo;
+export default DetailedPhoto;

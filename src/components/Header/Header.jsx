@@ -1,24 +1,37 @@
 import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router";
 
 import classes from "./Header.module.css";
 import logoImg from "../../assets/camera-logo.svg";
-import { setSearchValue, setResultPhotos } from "../../slices/photosSlice";
+import {
+    setSearchValue,
+    setResultPhotos,
+    setCurrentPage,
+} from "../../slices/photosSlice";
 
 function Header({ isVisible }) {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const inputRef = useRef();
+    const navigate = useNavigate();
 
     const submitHandler = (event) => {
         event.preventDefault();
         const searchValue = inputRef.current.value;
 
+        if (searchValue.length === 0) {
+            return;
+        }
+
+        navigate("/");
         dispatch(setSearchValue(searchValue));
+        dispatch(setCurrentPage(1));
     };
 
     const clickHandler = () => {
+        navigate("/");
         dispatch(setResultPhotos([]));
         dispatch(setSearchValue(""));
         inputRef.current.value = "";

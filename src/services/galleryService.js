@@ -23,3 +23,14 @@ export const getSearchPhotos = async (query, page) => {
         throw error;
     }
 };
+
+export const getSinglePhoto = async (id) => {
+    try {
+        const { data } = await axiosInstance.get(`/photos/${id}`);
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};

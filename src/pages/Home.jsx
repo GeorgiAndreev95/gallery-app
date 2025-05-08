@@ -2,11 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { getListPhotos, getSearchPhotos } from "../services/galleryService";
-import {
-    setCurrentPage,
-    setListPhotos,
-    setResultPhotos,
-} from "../slices/photosSlice";
+import { setListPhotos, setResultPhotos } from "../slices/photosSlice";
 import Photo from "../components/PhotoComponent/Photo";
 import PageSelect from "../components/Footer/PageSelect";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
@@ -45,16 +41,16 @@ const Home = React.memo(function Home() {
     }, [dispatch, searchValue, currentPage]);
 
     useEffect(() => {
-        dispatch(setCurrentPage(1));
         window.scrollTo({
             top: 0,
         });
-    }, [searchValue, dispatch]);
-
-    // console.log(photos);
-    console.log(resultPhotos);
+    }, [searchValue]);
 
     const photosResponse = searchValue ? resultPhotos : photos;
+
+    useEffect(() => {
+        console.log(photosResponse);
+    }, [photosResponse]);
 
     return (
         <>
