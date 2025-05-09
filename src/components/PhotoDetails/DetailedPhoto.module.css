@@ -26,6 +26,106 @@
     animation: backgroundPulse 1.5s infinite ease-in-out;
 }
 
+.viewsContainer {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.details {
+    padding: 14px;
+}
+
+h3 {
+    color: #767676;
+    font-weight: 400;
+    font-size: 15px;
+}
+
+.numbers {
+    font-weight: 450;
+    font-size: 16px;
+}
+
+.description {
+    margin-top: 16px;
+    transition: all 0.3s ease;
+}
+
+.clamp {
+    display: -webkit-box;
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.toggleButton {
+    background: none;
+    color: #767676;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 0;
+    margin-top: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.arrowIcon {
+    transition: transform 0.3s ease;
+}
+
+.arrowUp {
+    transform: rotate(-180deg);
+}
+
+.moreInfo {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    row-gap: 6px;
+}
+
+.infoContainer {
+    display: flex;
+    align-items: center;
+}
+
+.infoIcon {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.infoIcon svg {
+    height: 16px;
+    width: 16px;
+    stroke: #767676;
+}
+
+.infoText {
+    color: #767676;
+    font-size: 15px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    gap: 8px;
+}
+
+.tagButton {
+    text-transform: capitalize;
+    background: #eee;
+    color: #767676;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 15px;
+}
+
 @keyframes backgroundPulse {
     0% {
         background-color: #e7e7e7;

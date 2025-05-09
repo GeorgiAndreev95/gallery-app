@@ -2,7 +2,9 @@ import axiosInstance from "../axiosInstance";
 
 export const getListPhotos = async (page) => {
     try {
-        const { data } = await axiosInstance.get(`/photos?page=${page}`);
+        const { data } = await axiosInstance.get(
+            `/photos?page=${page}&per_page=20`
+        );
 
         return data;
     } catch (error) {
