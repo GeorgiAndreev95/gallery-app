@@ -19,8 +19,65 @@
 }
 
 .bio {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     font-weight: 350;
+}
+
+.forHire {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.forHiteText {
+    color: #007fff;
+}
+
+.icon {
+    display: flex;
+    gap: 5px;
+}
+
+.icon svg {
+    height: 18px;
+    width: 18px;
+    fill: #007fff;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    gap: 8px;
+}
+
+.tagButton {
+    text-transform: capitalize;
+    background: #eee;
+    color: #767676;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 15px;
+}
+
+.infoIcon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.infoIcon svg {
+    height: 18px;
+    width: 18px;
+    stroke: #767676;
+}
+
+.infoText {
+    color: #767676;
+}
+
+.interests {
+    margin-top: 2rem;
 }
 
 .userPhotos {
@@ -29,20 +86,6 @@
 
 .userPhotos p {
     padding: 15px;
-}
-
-.forHire {
-    display: flex;
-    align-items: center;
-}
-
-.forHire p {
-    color: #007fff;
-}
-
-.icon {
-    height: 18px;
-    width: 18px;
-    fill: #007fff;
-    margin-right: 5px;
+    font-size: 15px;
+    font-weight: 450;
 }

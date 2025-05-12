@@ -49,6 +49,18 @@ const Photos = React.memo(function Home() {
 
     return (
         <>
+            {resultPhotos.length === 0 && !isLoading && (
+                <p
+                    style={{
+                        fontWeight: "500",
+                        textAlign: "center",
+                        marginTop: "20px",
+                        marginBottom: "20px",
+                    }}
+                >
+                    No results found for "{searchTerm}"
+                </p>
+            )}
             {isLoading ? (
                 <div>
                     {Array.from({ length: 10 }).map((_, index) => (
