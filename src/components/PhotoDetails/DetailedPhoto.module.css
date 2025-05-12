@@ -36,7 +36,9 @@
     padding: 14px;
 }
 
-h3 {
+.views h3,
+.likes h3,
+.downloads h3 {
     color: #767676;
     font-weight: 400;
     font-size: 15px;

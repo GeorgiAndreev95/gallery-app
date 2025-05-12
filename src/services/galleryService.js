@@ -36,3 +36,27 @@ export const getSinglePhoto = async (id) => {
         throw error;
     }
 };
+
+export const getUserProfile = async (username) => {
+    try {
+        const { data } = await axiosInstance.get(`/users/${username}`);
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};
+
+export const getUserPhotos = async (username, page) => {
+    try {
+        const { data } = await axiosInstance.get(
+            `/users/${username}/photos?page=${page}&per_page=20&order_by=popular`
+        );
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};

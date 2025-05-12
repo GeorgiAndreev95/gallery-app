@@ -1,26 +1,32 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useParams } from "react-router";
 
-import { getListPhotos } from "../services/galleryService";
-import { setListPhotos } from "../slices/photosSlice";
+import { getSearchPhotos } from "../services/galleryService";
+import { setResultPhotos, setTotalPages } from "../slices/photosSlice";
 import Photo from "../components/PhotoComponent/Photo";
 import PageSelect from "../components/Footer/PageSelect";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 
-const Home = React.memo(function Home() {
+const Photos = React.memo(function Home() {
     const dispatch = useDispatch();
+    const { searchTerm } = useParams();
     const [isLoading, setIsLoading] = useState(true);
 
-    const photos = useSelector((state) => state.photos.listPhotos);
-    const searchValue = useSelector((state) => state.photos.searchValue);
+    const resultPhotos = useSelector((state) => state.photos.resultPhotos);
     const currentPage = useSelector((state) => state.photos.currentPage);
 
     useEffect(() => {
         const fetchPhotos = async () => {
             setIsLoading(true);
             try {
-                const listPhotos = await getListPhotos(currentPage);
-                dispatch(setListPhotos(listPhotos));
+                const searchPhotos = await getSearchPhotos(
+                    searchTerm,
+                    currentPage
+                );
+                console.log(searchPhotos);
+                dispatch(setResultPhotos(searchPhotos.results));
+                dispatch(setTotalPages(searchPhotos.total_pages));
             } catch (error) {
                 console.error("Error fetching photos:", error);
             } finally {
@@ -29,17 +35,17 @@ const Home = React.memo(function Home() {
         };
 
         fetchPhotos();
-    }, [dispatch, searchValue, currentPage]);
+    }, [dispatch, searchTerm, currentPage]);
 
     useEffect(() => {
         window.scrollTo({
             top: 0,
         });
-    }, [searchValue]);
+    }, [searchTerm]);
 
     useEffect(() => {
-        console.log(photos);
-    }, [photos]);
+        console.log(resultPhotos);
+    }, [resultPhotos]);
 
     return (
         <>
@@ -50,7 +56,7 @@ const Home = React.memo(function Home() {
                     ))}
                 </div>
             ) : (
-                <Photo photos={photos} />
+                <Photo photos={resultPhotos} />
             )}
 
             <PageSelect />
@@ -58,4 +64,4 @@ const Home = React.memo(function Home() {
     );
 });
 
-export default Home;
+export default Photos;

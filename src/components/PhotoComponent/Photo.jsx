@@ -16,6 +16,10 @@ function Photo({ photos }) {
         navigate(`/details/${id}`);
     };
 
+    const handleUserClick = (username) => {
+        navigate(`/${username}`);
+    };
+
     return photos.map((photo) => (
         <div
             key={photo.id}
@@ -27,13 +31,16 @@ function Photo({ photos }) {
         >
             <div className={classes.author}>
                 <img
+                    onClick={() => handleUserClick(photo.user.username)}
                     src={photo.user.profile_image.small}
                     style={{
                         width: "34px",
                         height: "34px",
                     }}
                 />
-                <p>{photo.user.name}</p>
+                <p onClick={() => handleUserClick(photo.user.username)}>
+                    {photo.user.name}
+                </p>
             </div>
 
             <div

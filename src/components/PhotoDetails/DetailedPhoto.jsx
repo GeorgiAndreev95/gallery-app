@@ -1,19 +1,17 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 
 import classes from "./DetailedPhoto.module.css";
 import BlurHashImage from "../PhotoComponent/BlurHashImage";
-import {
-    setCurrentPage,
-    setResultPhotos,
-    setSearchValue,
-} from "../../slices/photosSlice";
+import { setCurrentPage, setResultPhotos } from "../../slices/photosSlice";
 
 function DetailedPhoto({ photo }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
 
+    const descriptionRef = useRef(null);
+    const [isClamped, setIsClamped] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showMore, setShowMore] = useState(false);
 
@@ -27,11 +25,27 @@ function DetailedPhoto({ photo }) {
     );
 
     const handleTagClick = (tag) => {
-        dispatch(setSearchValue(tag));
         dispatch(setCurrentPage(1));
         dispatch(setResultPhotos([]));
-        navigate("/");
+        navigate(`/photos/${tag}`);
     };
+
+    const handleUserClick = (username) => {
+        navigate(`/${username}`);
+    };
+
+    useEffect(() => {
+        if (descriptionRef.current) {
+            const lineHeight = parseFloat(
+                getComputedStyle(descriptionRef.current).lineHeight
+            );
+            const maxLines = 2;
+            const maxHeight = lineHeight * maxLines;
+            if (descriptionRef.current.scrollHeight > maxHeight) {
+                setIsClamped(true);
+            }
+        }
+    }, [photo.description]);
 
     return (
         <div
@@ -44,13 +58,16 @@ function DetailedPhoto({ photo }) {
         >
             <div className={classes.author}>
                 <img
+                    onClick={() => handleUserClick(photo.user.username)}
                     src={photo.user.profile_image.small}
                     style={{
                         width: "34px",
                         height: "34px",
                     }}
                 />
-                <p>{photo.user.name}</p>
+                <p onClick={() => handleUserClick(photo.user.username)}>
+                    {photo.user.name}
+                </p>
             </div>
 
             <div
@@ -110,38 +127,37 @@ function DetailedPhoto({ photo }) {
 
                 <div className={classes.descriptionContainer}>
                     <div
+                        ref={descriptionRef}
                         className={`${classes.description} ${
                             !showMore ? classes.clamp : ""
                         }`}
                     >
                         <p>{photo.description}</p>
                     </div>
-                    <div>
-                        {photo.description && (
-                            <button
-                                className={classes.toggleButton}
-                                onClick={() => setShowMore((prev) => !prev)}
+                    {photo.description && isClamped && (
+                        <button
+                            className={classes.toggleButton}
+                            onClick={() => setShowMore((prev) => !prev)}
+                        >
+                            {showMore ? "Show less" : "Show more"}
+                            <svg
+                                className={`${classes.arrowIcon} ${
+                                    showMore ? classes.arrowUp : ""
+                                }`}
+                                xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 20 20"
+                                fill="currentColor"
+                                width="14"
+                                height="14"
                             >
-                                {showMore ? "Show less" : "Show more"}
-                                <svg
-                                    className={`${classes.arrowIcon} ${
-                                        showMore ? classes.arrowUp : ""
-                                    }`}
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    viewBox="0 0 20 20"
-                                    fill="currentColor"
-                                    width="14"
-                                    height="14"
-                                >
-                                    <path
-                                        fillRule="evenodd"
-                                        d="M10 14a1 1 0 01-.7-.3l-5-5a1 1 0 011.4-1.4L10 11.58l4.3-4.3a1 1 0 011.4 1.42l-5 5a1 1 0 01-.7.3z"
-                                        clipRule="evenodd"
-                                    />
-                                </svg>
-                            </button>
-                        )}
-                    </div>
+                                <path
+                                    fillRule="evenodd"
+                                    d="M10 14a1 1 0 01-.7-.3l-5-5a1 1 0 011.4-1.4L10 11.58l4.3-4.3a1 1 0 011.4 1.42l-5 5a1 1 0 01-.7.3z"
+                                    clipRule="evenodd"
+                                />
+                            </svg>
+                        </button>
+                    )}
                 </div>
 
                 <div className={classes.moreInfo}>

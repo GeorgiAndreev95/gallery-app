@@ -1,21 +1,18 @@
-import { useRef } from "react";
+import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router";
+import { useNavigate, useLocation } from "react-router";
 
 import classes from "./Header.module.css";
 import logoImg from "../../assets/camera-logo.svg";
-import {
-    setSearchValue,
-    setResultPhotos,
-    setCurrentPage,
-} from "../../slices/photosSlice";
+import { setResultPhotos, setCurrentPage } from "../../slices/photosSlice";
 
 function Header({ isVisible }) {
     const { t } = useTranslation();
     const dispatch = useDispatch();
     const inputRef = useRef();
     const navigate = useNavigate();
+    const location = useLocation();
 
     const submitHandler = (event) => {
         event.preventDefault();
@@ -25,17 +22,24 @@ function Header({ isVisible }) {
             return;
         }
 
-        navigate("/");
-        dispatch(setSearchValue(searchValue));
+        navigate(`/photos/${searchValue}`);
         dispatch(setCurrentPage(1));
     };
 
     const clickHandler = () => {
         navigate("/");
         dispatch(setResultPhotos([]));
-        dispatch(setSearchValue(""));
+        dispatch(setCurrentPage(1));
         inputRef.current.value = "";
     };
+
+    useEffect(() => {
+        const isPhotosRoute = location.pathname.startsWith("/photos");
+
+        if (!isPhotosRoute && inputRef.current) {
+            inputRef.current.value = "";
+        }
+    }, [location]);
 
     return (
         <header
