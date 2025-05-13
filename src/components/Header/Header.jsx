@@ -5,7 +5,11 @@ import { useNavigate, useLocation } from "react-router";
 
 import classes from "./Header.module.css";
 import logoImg from "../../assets/camera-logo.svg";
-import { setResultPhotos, setCurrentPage } from "../../slices/photosSlice";
+import {
+    setResultPhotos,
+    setCurrentPage,
+    setTotalPages,
+} from "../../slices/photosSlice";
 
 function Header({ isVisible }) {
     const { t } = useTranslation();
@@ -30,6 +34,7 @@ function Header({ isVisible }) {
         navigate("/");
         dispatch(setResultPhotos([]));
         dispatch(setCurrentPage(1));
+        dispatch(setTotalPages(500));
         inputRef.current.value = "";
     };
 

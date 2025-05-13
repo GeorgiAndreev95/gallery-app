@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
 // eslint-disable-next-line no-unused-vars
@@ -18,6 +18,7 @@ function UserBio({ user }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
+    const [showScrollTop, setShowScrollTop] = useState(false);
     const { instagram_username, twitter_username, portfolio_url } = user.social;
     const hasSocialLinks =
         instagram_username || twitter_username || portfolio_url;
@@ -32,6 +33,19 @@ function UserBio({ user }) {
         tags,
         total_photos,
     } = user;
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setShowScrollTop(window.scrollY > 2000);
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    const scrollToTop = () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+    };
 
     const handleTagClick = (tag) => {
         dispatch(setCurrentPage(1));
@@ -187,6 +201,25 @@ function UserBio({ user }) {
                     </div>
                 )}
             </div>
+
+            <AnimatePresence>
+                {showScrollTop && (
+                    <motion.div
+                        className={classes.scrollTopWrapper}
+                        initial={{ opacity: 0, scale: 0.5 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.5 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        <button
+                            className={classes.scrollTopButton}
+                            onClick={scrollToTop}
+                        >
+                            ▲<span className={classes.tooltip}>To top</span>
+                        </button>
+                    </motion.div>
+                )}
+            </AnimatePresence>
 
             <div className={classes.userPhotos}>
                 <p>User Photos {`(${total_photos})`}</p>
