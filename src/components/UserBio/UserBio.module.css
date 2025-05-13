@@ -21,12 +21,19 @@
 .bio {
     margin-bottom: 1.5rem;
     font-weight: 350;
+    white-space: pre-line;
+}
+
+.additionalInfo {
+    display: flex;
+    flex-direction: column;
+
+    row-gap: 0.5rem;
 }
 
 .forHire {
     display: flex;
     align-items: center;
-    margin-bottom: 0.5rem;
 }
 
 .forHiteText {
@@ -35,13 +42,8 @@
 
 .icon {
     display: flex;
+    align-items: center;
     gap: 5px;
-}
-
-.icon svg {
-    height: 18px;
-    width: 18px;
-    fill: #007fff;
 }
 
 .tags {
@@ -66,14 +68,47 @@
     gap: 5px;
 }
 
-.infoIcon svg {
-    height: 18px;
-    width: 18px;
-    stroke: #767676;
-}
-
 .infoText {
     color: #767676;
+}
+
+.dropdownWrapper {
+    position: relative;
+    /* display: inline-block; */
+}
+
+.dropdownMenu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    background-color: white;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    z-index: 1000;
+    min-width: 160px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    transform-origin: top;
+}
+
+.dropdownMenu ul {
+    list-style: none;
+    margin: 0;
+    padding: 8px 0;
+}
+
+.dropdownMenu li {
+    display: flex;
+    padding: 5px 10px;
+    color: #767676;
+    font-size: 14px;
+    font-weight: 350;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.dropdownMenu li:hover {
+    background-color: #f3f3f3;
 }
 
 .interests {
