@@ -19,6 +19,7 @@ function UserBio({ user }) {
     const navigate = useNavigate();
     const [showDropdown, setShowDropdown] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
     const { instagram_username, twitter_username, portfolio_url } = user.social;
     const hasSocialLinks =
         instagram_username || twitter_username || portfolio_url;
@@ -61,11 +62,22 @@ function UserBio({ user }) {
         <>
             <div className={classes.userProfile}>
                 <div className={classes.userInfo}>
-                    <img
-                        className={classes.profileImage}
-                        src={profile_image.large}
-                        alt={name}
-                    />
+                    <div className={classes.imgWrapper}>
+                        <img
+                            className={classes.profileImage}
+                            src={profile_image.large}
+                            alt={name}
+                            onLoad={() => setIsLoaded(true)}
+                            style={{
+                                inset: 0,
+                                opacity: isLoaded ? 1 : 0,
+                                background: "#e7e7e7",
+                                transition: "opacity 0.4s ease-in-out",
+                                zIndex: 2,
+                            }}
+                        />
+                    </div>
+
                     <h2>{name}</h2>
                     <p className={classes.username}>@{username}</p>
                     {bio && <p className={classes.bio}>{bio}</p>}

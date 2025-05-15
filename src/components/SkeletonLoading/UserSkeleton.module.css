@@ -1,0 +1,75 @@
+.userProfile {
+    padding: 15px;
+}
+
+.profileImage {
+    height: 128px;
+    width: 128px;
+    border: 1px solid #e7e7e7;
+    background: #e7e7e7;
+    border-radius: 50%;
+    margin: 1rem 0;
+}
+
+.userFullName {
+    height: 40px;
+    width: 200px;
+    background: #e7e7e7;
+    border-radius: 12px;
+    margin-bottom: 0.25rem;
+}
+
+.username {
+    height: 25px;
+    width: 75px;
+    background: #e7e7e7;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.bio {
+    height: 50px;
+    width: 350px;
+    background: #e7e7e7;
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.additionalInfo {
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.5rem;
+}
+
+.info {
+    height: 25px;
+    width: 150px;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.interests {
+    margin-top: 2rem;
+}
+
+.interestsLable {
+    height: 25px;
+    width: 50px;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.tags {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 0.5rem;
+    gap: 8px;
+}
+
+.tagButton {
+    height: 26px;
+    width: 70px;
+    background: #e7e7e7;
+    border-radius: 4px;
+    font-size: 15px;
+}

@@ -4,6 +4,7 @@ import { useParams } from "react-router";
 import { getUserPhotos, getUserProfile } from "../services/galleryService";
 import Photo from "../components/PhotoComponent/Photo";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
+import UserSkeleton from "../components/SkeletonLoading/UserSkeleton";
 import UserBio from "../components/UserBio/UserBio";
 
 function UserProfile() {
@@ -65,7 +66,9 @@ function UserProfile() {
 
     return (
         <>
-            {user && (
+            {initialLoad && !user ? (
+                <UserSkeleton />
+            ) : (
                 <div>
                     <UserBio user={user} />
                     {initialLoad ? (

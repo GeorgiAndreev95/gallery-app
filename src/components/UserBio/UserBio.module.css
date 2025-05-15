@@ -2,8 +2,18 @@
     padding: 15px;
 }
 
+.imgWrapper {
+    height: 128px;
+    width: 128px;
+    border-radius: 50%;
+    background: #e7e7e7;
+}
+
 .userInfo img {
     border: 1px solid #e7e7e7;
+    height: 128px;
+    width: 128px;
+    background: #e7e7e7;
     border-radius: 50%;
     margin: 1rem 0;
 }
