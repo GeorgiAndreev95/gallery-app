@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router";
-// eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from "motion/react";
+import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 import {
     FaGlobeAmericas,
     FaInstagram,
     FaCheckCircle,
     FaLink,
 } from "react-icons/fa";
-import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
 
 import { setCurrentPage, setResultPhotos } from "../../slices/photosSlice";
 import classes from "./UserBio.module.css";
@@ -20,6 +19,7 @@ function UserBio({ user }) {
     const [showDropdown, setShowDropdown] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+
     const { instagram_username, twitter_username, portfolio_url } = user.social;
     const hasSocialLinks =
         instagram_username || twitter_username || portfolio_url;
@@ -78,140 +78,159 @@ function UserBio({ user }) {
                         />
                     </div>
 
-                    <h2>{name}</h2>
-                    <p className={classes.username}>@{username}</p>
-                    {bio && <p className={classes.bio}>{bio}</p>}
+                    <div className={classes.infoContainer}>
+                        <h2>{name}</h2>
+                        <p className={classes.username}>@{username}</p>
+                        {bio && <p className={classes.bio}>{bio}</p>}
 
-                    <div className={classes.additionalInfo}>
-                        {for_hire === true && (
-                            <div className={classes.forHire}>
-                                <span className={classes.icon}>
-                                    <FaCheckCircle size={16} color="#007fff" />
-                                    <span className={classes.forHiteText}>
-                                        Available for hire
-                                    </span>
-                                </span>
-
-                                <p></p>
-                            </div>
-                        )}
-                        {location && (
-                            <div className={classes.infoContainer}>
-                                <span className={classes.infoIcon}>
-                                    <FaLocationDot size={16} color="#767676" />
-                                    <span className={classes.infoText}>
-                                        {location}
-                                    </span>
-                                </span>
-                            </div>
-                        )}
-
-                        {hasSocialLinks && (
-                            <div className={classes.dropdownWrapper}>
-                                <button
-                                    className={classes.infoContainer}
-                                    onClick={toggleDropdown}
-                                >
-                                    <span className={classes.infoIcon}>
-                                        <FaLink size={16} color="#767676" />
-                                        <span className={classes.infoText}>
-                                            {`Connect with ${first_name} ⯆`}
+                        <div className={classes.additionalInfo}>
+                            {for_hire === true && (
+                                <div className={classes.forHire}>
+                                    <span className={classes.icon}>
+                                        <FaCheckCircle
+                                            size={16}
+                                            color="#007fff"
+                                        />
+                                        <span className={classes.forHiteText}>
+                                            Available for hire
                                         </span>
                                     </span>
-                                </button>
 
-                                <AnimatePresence>
-                                    {showDropdown && (
-                                        <motion.div
-                                            className={classes.dropdownMenu}
-                                            initial={{ opacity: 0, scale: 0.8 }}
-                                            animate={{ opacity: 1, scale: 1 }}
-                                            exit={{ opacity: 0, scale: 0.8 }}
-                                            transition={{
-                                                duration: 0.1,
-                                                ease: "easeInOut",
-                                            }}
+                                    <p></p>
+                                </div>
+                            )}
+                            {location && (
+                                <div className={classes.infoContainer}>
+                                    <span className={classes.infoIcon}>
+                                        <FaLocationDot
+                                            size={16}
+                                            color="#767676"
+                                        />
+                                        <span className={classes.infoText}>
+                                            {location}
+                                        </span>
+                                    </span>
+                                </div>
+                            )}
+
+                            {hasSocialLinks && (
+                                <div className={classes.dropdownWrapper}>
+                                    <button
+                                        className={classes.infoWrapper}
+                                        onClick={toggleDropdown}
+                                    >
+                                        <span className={classes.infoIcon}>
+                                            <FaLink size={16} color="#767676" />
+                                            <span className={classes.infoText}>
+                                                {`Connect with ${first_name} ⯆`}
+                                            </span>
+                                        </span>
+                                    </button>
+
+                                    <AnimatePresence>
+                                        {showDropdown && (
+                                            <motion.div
+                                                className={classes.dropdownMenu}
+                                                initial={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                }}
+                                                animate={{
+                                                    opacity: 1,
+                                                    scale: 1,
+                                                }}
+                                                exit={{
+                                                    opacity: 0,
+                                                    scale: 0.8,
+                                                }}
+                                                transition={{
+                                                    duration: 0.1,
+                                                    ease: "easeInOut",
+                                                }}
+                                            >
+                                                <ul>
+                                                    {portfolio_url && (
+                                                        <li>
+                                                            <FaGlobeAmericas
+                                                                size={16}
+                                                                color="#767676"
+                                                                style={{
+                                                                    marginRight:
+                                                                        "8px",
+                                                                }}
+                                                            />
+                                                            <a
+                                                                href="http://toaheftiba.co.uk/"
+                                                                target="_blank"
+                                                            >
+                                                                {portfolio_url}
+                                                            </a>
+                                                        </li>
+                                                    )}
+                                                    {instagram_username && (
+                                                        <li>
+                                                            <FaInstagram
+                                                                size={16}
+                                                                color="#767676"
+                                                                style={{
+                                                                    marginRight:
+                                                                        "8px",
+                                                                }}
+                                                            />
+                                                            <a
+                                                                href={`https://www.instagram.com/${instagram_username}`}
+                                                                target="_blank"
+                                                            >
+                                                                Instagram
+                                                            </a>
+                                                        </li>
+                                                    )}
+                                                    {twitter_username && (
+                                                        <li>
+                                                            <FaXTwitter
+                                                                size={16}
+                                                                color="#767676"
+                                                                style={{
+                                                                    marginRight:
+                                                                        "8px",
+                                                                }}
+                                                            />
+                                                            <a
+                                                                href={`https://www.x.com/${twitter_username}`}
+                                                                target="_blank"
+                                                            >
+                                                                Twitter
+                                                            </a>
+                                                        </li>
+                                                    )}
+                                                </ul>
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                            )}
+                        </div>
+
+                        {tags.custom.length > 0 && (
+                            <div className={classes.interests}>
+                                <p>Interests</p>
+                                <div className={classes.tags}>
+                                    {tags.custom.map((tag, index) => (
+                                        <button
+                                            key={index}
+                                            className={classes.tagButton}
+                                            onClick={() =>
+                                                handleTagClick(tag.title)
+                                            }
                                         >
-                                            <ul>
-                                                {portfolio_url && (
-                                                    <li>
-                                                        <FaGlobeAmericas
-                                                            size={16}
-                                                            color="#767676"
-                                                            style={{
-                                                                marginRight:
-                                                                    "8px",
-                                                            }}
-                                                        />
-                                                        <a
-                                                            href="http://toaheftiba.co.uk/"
-                                                            target="_blank"
-                                                        >
-                                                            {portfolio_url}
-                                                        </a>
-                                                    </li>
-                                                )}
-                                                {instagram_username && (
-                                                    <li>
-                                                        <FaInstagram
-                                                            size={16}
-                                                            color="#767676"
-                                                            style={{
-                                                                marginRight:
-                                                                    "8px",
-                                                            }}
-                                                        />
-                                                        <a
-                                                            href={`https://www.instagram.com/${instagram_username}`}
-                                                            target="_blank"
-                                                        >
-                                                            Instagram
-                                                        </a>
-                                                    </li>
-                                                )}
-                                                {twitter_username && (
-                                                    <li>
-                                                        <FaXTwitter
-                                                            size={16}
-                                                            color="#767676"
-                                                            style={{
-                                                                marginRight:
-                                                                    "8px",
-                                                            }}
-                                                        />
-                                                        <a
-                                                            href={`https://www.x.com/${twitter_username}`}
-                                                            target="_blank"
-                                                        >
-                                                            Twitter
-                                                        </a>
-                                                    </li>
-                                                )}
-                                            </ul>
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
+                                            {tag.title}
+                                        </button>
+                                    ))}
+                                </div>
                             </div>
                         )}
                     </div>
                 </div>
-
-                {tags.custom.length > 0 && (
-                    <div className={classes.interests}>
-                        <p>Interests</p>
-                        <div className={classes.tags}>
-                            {tags.custom.map((tag, index) => (
-                                <button
-                                    key={index}
-                                    className={classes.tagButton}
-                                    onClick={() => handleTagClick(tag.title)}
-                                >
-                                    {tag.title}
-                                </button>
-                            ))}
-                        </div>
-                    </div>
-                )}
             </div>
 
             <AnimatePresence>

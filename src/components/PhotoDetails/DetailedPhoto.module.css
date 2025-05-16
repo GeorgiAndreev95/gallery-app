@@ -139,3 +139,9 @@
         background-color: #e7e7e7;
     }
 }
+
+@media (min-width: 768px) {
+    .imageContainer {
+        padding: 15px;
+    }
+}

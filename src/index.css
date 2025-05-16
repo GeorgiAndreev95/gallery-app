@@ -84,3 +84,32 @@ a {
     text-decoration: none;
     color: inherit;
 }
+
+/* Masonry Grid */
+.masonryGrid {
+    display: flex;
+    margin-top: 1rem;
+    width: auto;
+}
+
+.masonryGridColumn {
+    background-clip: padding-box;
+}
+
+.masonryGridColumn > div {
+    margin-bottom: 16px;
+}
+
+@media (min-width: 768px) {
+    .masonryGridColumn {
+        padding: 0 8px;
+        background-clip: padding-box;
+    }
+}
+
+@media (min-width: 992px) {
+    .masonryGrid {
+        max-width: 80vw;
+        justify-self: center;
+    }
+}

@@ -5,7 +5,7 @@ const initialState = {
     resultPhotos: [],
     resultPhoto: {},
     currentPage: 1,
-    totalPages: 0,
+    totalPages: 500,
 };
 
 export const photosSlice = createSlice({

@@ -2,10 +2,11 @@ import { useCallback, useEffect, useState } from "react";
 import { useParams } from "react-router";
 
 import { getUserPhotos, getUserProfile } from "../services/galleryService";
-import Photo from "../components/PhotoComponent/Photo";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 import UserSkeleton from "../components/SkeletonLoading/UserSkeleton";
 import UserBio from "../components/UserBio/UserBio";
+import UserPhoto from "../components/PhotoComponent/UserPhoto";
+import LoadingSpinner from "../components/SkeletonLoading/LoadingSpinner";
 
 function UserProfile() {
     const { username } = useParams();
@@ -51,7 +52,7 @@ function UserProfile() {
     useEffect(() => {
         const handleScroll = () => {
             if (
-                window.innerHeight + document.documentElement.scrollTop + 100 >=
+                window.innerHeight + document.documentElement.scrollTop + 900 >=
                     document.documentElement.offsetHeight &&
                 !isLoading &&
                 hasMore
@@ -69,37 +70,38 @@ function UserProfile() {
             {initialLoad && !user ? (
                 <UserSkeleton />
             ) : (
-                <div>
-                    <UserBio user={user} />
-                    {initialLoad ? (
-                        <div>
-                            {Array.from({ length: 10 }).map((_, index) => (
-                                <SkeletonLoading key={index} />
-                            ))}
-                        </div>
-                    ) : (
-                        <>
-                            <Photo photos={photos} />
-                            {isLoading &&
-                                Array.from({ length: 4 }).map((_, index) => (
-                                    <SkeletonLoading key={`loader-${index}`} />
+                user && (
+                    <div>
+                        <UserBio user={user} />
+                        {initialLoad ? (
+                            <div>
+                                {Array.from({ length: 10 }).map((_, index) => (
+                                    <SkeletonLoading key={index} />
                                 ))}
+                            </div>
+                        ) : (
+                            <>
+                                <UserPhoto photos={photos} />
+                                {isLoading && !initialLoad && (
+                                    <LoadingSpinner />
+                                )}
 
-                            {!hasMore && !isLoading && (
-                                <p
-                                    style={{
-                                        fontWeight: "500",
-                                        textAlign: "center",
-                                        marginTop: "20px",
-                                        marginBottom: "20px",
-                                    }}
-                                >
-                                    No more photos
-                                </p>
-                            )}
-                        </>
-                    )}
-                </div>
+                                {!hasMore && !isLoading && (
+                                    <p
+                                        style={{
+                                            fontWeight: "500",
+                                            textAlign: "center",
+                                            marginTop: "20px",
+                                            marginBottom: "20px",
+                                        }}
+                                    >
+                                        No more photos
+                                    </p>
+                                )}
+                            </>
+                        )}
+                    </div>
+                )
             )}
         </>
     );

@@ -1,57 +1,45 @@
-.bodyWrapper {
-    column-count: 1;
+.userImageContainer {
+    break-inside: avoid;
+    width: 100%;
 }
 
-.imageContainer {
-    margin-top: 16px;
-    margin-bottom: 48px;
+.mainUserImage {
+    width: 100%;
+    position: relative;
 }
 
-.author {
+.mainUserImage img {
+    width: 100%;
+    /* border-radius: 8px; */
+    background-color: #e7e7e7;
+}
+
+.userAuthor {
     display: flex;
     gap: 8px;
-    margin-bottom: 10px;
-    margin-left: 10px;
+    margin-bottom: 8px;
+    align-items: center;
     cursor: pointer;
 }
 
-.author img {
+.userAuthor img {
     width: 34px;
     height: 34px;
     border-radius: 50%;
     border: 1px solid #e7e7e7;
+    background-color: #e7e7e7;
 }
 
-.author p {
-    align-self: center;
+.userAuthor p {
     font-weight: 500;
-}
-
-.mainImage img {
-    cursor: pointer;
+    font-size: 16px;
 }
 
 @media (min-width: 768px) {
-    .bodyWrapper {
-        padding: 0 20px;
-        margin: 0 auto;
-        column-count: 2;
-        column-gap: 16px;
-        gap: 15px;
-    }
-
-    .imageContainer {
-        display: inline-block;
-        max-width: 45vw;
-        height: 100%;
-        margin-top: 0;
-        margin-bottom: 16px;
-    }
-
-    .author {
+    .userAuthor {
         position: absolute;
-        bottom: 8px;
-        left: 8px;
+        bottom: 5px;
+        left: 15px;
         display: flex;
         align-items: center;
         gap: 8px;
@@ -63,35 +51,28 @@
         transform: translateY(10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
         cursor: pointer;
+        z-index: 3;
     }
 
-    .author img {
+    .userAuthor img {
         width: 30px;
         height: 30px;
         border-radius: 50%;
         border: 1px solid white;
     }
 
-    .author p {
+    .userAuthor p {
         font-size: 14px;
         font-weight: 500;
         margin: 0;
     }
 
-    .mainImage img {
+    .mainUserImage img {
         border-radius: 8px;
     }
 
-    .mainImage:hover .author {
+    .mainUserImage:hover .userAuthor {
         opacity: 1;
         transform: translateY(0);
-        cursor: pointer;
-    }
-}
-
-@media (min-width: 992px) {
-    .bodyWrapper {
-        column-count: 3;
-        max-width: 80vw;
     }
 }

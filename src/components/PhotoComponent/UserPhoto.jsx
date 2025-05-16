@@ -1,13 +1,14 @@
 import { useState } from "react";
 import { useNavigate } from "react-router";
 import { useDispatch } from "react-redux";
+import Masonry from "react-masonry-css";
 
-import classes from "./Photo.module.css";
-import BlurHashImage from "./BlurHashImage";
+import classes from "./UserPhoto.module.css";
 import { setResultPhoto } from "../../slices/photosSlice";
+import BlurHashImage from "./BlurHashImage";
 
-function Photo({ photos }) {
-    const [isLoaded, setIsLoaded] = useState(false);
+function UserPhoto({ photos }) {
+    const [loadedPhotos, setLoadedPhotos] = useState({});
     const navigate = useNavigate();
     const dispatch = useDispatch();
 
@@ -20,24 +21,28 @@ function Photo({ photos }) {
         navigate(`/${username}`);
     };
 
+    const breakpointColumnsObj = {
+        default: 3,
+        992: 2,
+        766: 1,
+    };
+
     return (
-        <div className={classes.bodyWrapper}>
+        <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className="masonryGrid"
+            columnClassName="masonryGridColumn"
+        >
             {photos.map((photo) => (
-                <div
-                    key={photo.id}
-                    className={classes.imageContainer}
-                    style={{
-                        aspectRatio: `${photo.width} / ${photo.height}`,
-                    }}
-                >
+                <div key={photo.id} className={classes.userImageContainer}>
                     <div
-                        className={classes.mainImage}
+                        className={classes.mainUserImage}
                         style={{
                             position: "relative",
                             overflow: "hidden",
                         }}
                     >
-                        <div className={classes.author}>
+                        <div className={classes.userAuthor}>
                             <img
                                 onClick={() =>
                                     handleUserClick(photo.user.username)
@@ -47,6 +52,7 @@ function Photo({ photos }) {
                                 ${photo.user.profile_image.medium} 64w, 
                                 ${photo.user.profile_image.large} 128w
                                 `}
+                                alt={photo.user.name}
                             />
                             <p
                                 onClick={() =>
@@ -57,13 +63,14 @@ function Photo({ photos }) {
                             </p>
                         </div>
 
-                        {!isLoaded && (
+                        {!loadedPhotos[photo.id] && (
                             <BlurHashImage
                                 hash={photo.blur_hash}
                                 width={32}
                                 height={32}
                             />
                         )}
+
                         <img
                             srcSet={`
                                 ${photo.urls.thumb} 200w,
@@ -72,23 +79,28 @@ function Photo({ photos }) {
                                 ${photo.urls.full} 1920w
                                 `}
                             sizes="(max-width: 767px) 100vw,
-                                    (min-width: 768px) 50vw,
-                                    100vw"
+                            (min-width: 768px) 50vw,
+                            100vw"
                             alt={photo.alt_description || "Photo"}
-                            onLoad={() => setIsLoaded(true)}
+                            onLoad={() =>
+                                setLoadedPhotos((prev) => ({
+                                    ...prev,
+                                    [photo.id]: true,
+                                }))
+                            }
+                            onClick={() => handleClick(photo.id)}
                             style={{
                                 inset: 0,
-                                opacity: isLoaded ? 1 : 0,
+                                opacity: loadedPhotos[photo.id] ? 1 : 0,
                                 transition: "opacity 0.4s ease-in-out",
                                 zIndex: 2,
                             }}
-                            onClick={() => handleClick(photo.id)}
                         />
                     </div>
                 </div>
             ))}
-        </div>
+        </Masonry>
     );
 }
 
-export default Photo;
+export default UserPhoto;
