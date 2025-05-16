@@ -14,6 +14,7 @@ function DetailedPhoto({ photo }) {
     const [isClamped, setIsClamped] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const [showMore, setShowMore] = useState(false);
+    const [showModal, setShowModal] = useState(false);
 
     const formattedDate = new Date(photo.created_at).toLocaleDateString(
         "en-US",
@@ -34,6 +35,10 @@ function DetailedPhoto({ photo }) {
         navigate(`/${username}`);
     };
 
+    const toggleModal = () => {
+        setShowModal((prev) => !prev);
+    };
+
     useEffect(() => {
         if (descriptionRef.current) {
             const lineHeight = parseFloat(
@@ -46,6 +51,18 @@ function DetailedPhoto({ photo }) {
             }
         }
     }, [photo.description]);
+
+    useEffect(() => {
+        if (showModal) {
+            document.body.style.overflow = "hidden";
+        } else {
+            document.body.style.overflow = "auto";
+        }
+
+        return () => {
+            document.body.style.overflow = "auto";
+        };
+    }, [showModal]);
 
     return (
         <div
@@ -95,6 +112,7 @@ function DetailedPhoto({ photo }) {
             `}
                     alt={photo.alt_description || "Photo"}
                     onLoad={() => setIsLoaded(true)}
+                    onClick={toggleModal}
                     style={{
                         width: "100%",
                         height: "100%",
@@ -102,6 +120,7 @@ function DetailedPhoto({ photo }) {
                         opacity: isLoaded ? 1 : 0,
                         transition: "opacity 0.4s ease-in-out",
                         zIndex: 2,
+                        cursor: "zoom-in",
                     }}
                 />
             </div>
@@ -277,6 +296,16 @@ function DetailedPhoto({ photo }) {
                     </div>
                 </div>
             </div>
+
+            {showModal && (
+                <div className={classes.modalOverlay} onClick={toggleModal}>
+                    <img
+                        src={photo.urls.raw}
+                        alt={photo.alt_description || "Full size photo"}
+                        className={classes.modalImage}
+                    />
+                </div>
+            )}
         </div>
     );
 }
