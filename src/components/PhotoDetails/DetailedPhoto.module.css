@@ -141,7 +141,17 @@
 }
 
 @media (min-width: 768px) {
-    .imageContainer {
+    .detailedImageContainer {
         padding: 15px;
+        height: 100vh;
+    }
+
+    .mainDetailedImage {
+        margin: 0 auto;
+        max-height: 85vh;
+    }
+
+    .tags {
+        margin-bottom: 120px;
     }
 }

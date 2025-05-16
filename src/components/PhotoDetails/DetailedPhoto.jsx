@@ -50,7 +50,7 @@ function DetailedPhoto({ photo }) {
     return (
         <div
             key={photo.id}
-            className={classes.imageContainer}
+            className={classes.detailedImageContainer}
             style={{
                 width: "100%",
                 aspectRatio: `${photo.width} / ${photo.height}`,
@@ -71,12 +71,11 @@ function DetailedPhoto({ photo }) {
             </div>
 
             <div
-                className={classes.mainImage}
+                className={classes.mainDetailedImage}
                 style={{
-                    width: "100%",
-                    height: "100%",
                     position: "relative",
                     overflow: "hidden",
+                    aspectRatio: `${photo.width} / ${photo.height}`,
                 }}
             >
                 {!isLoaded && (
