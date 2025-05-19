@@ -115,7 +115,7 @@ function DetailedPhoto({ photo }) {
                     onClick={toggleModal}
                     style={{
                         width: "100%",
-                        height: "100%",
+                        height: "auto",
                         inset: 0,
                         opacity: isLoaded ? 1 : 0,
                         transition: "opacity 0.4s ease-in-out",

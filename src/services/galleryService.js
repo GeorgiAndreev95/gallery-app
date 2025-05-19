@@ -60,3 +60,16 @@ export const getUserPhotos = async (username, page) => {
         throw error;
     }
 };
+
+export const getUserLikedPhotos = async (username, page) => {
+    try {
+        const { data } = await axiosInstance.get(
+            `/users/${username}/likes?page=${page}&per_page=20&order_by=popular`
+        );
+
+        return data;
+    } catch (error) {
+        console.log(error);
+        throw error;
+    }
+};

@@ -69,6 +69,7 @@
 
     .mainUserImage img {
         border-radius: 8px;
+        cursor: zoom-in;
     }
 
     .mainUserImage:hover .userAuthor {

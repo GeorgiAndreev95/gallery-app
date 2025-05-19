@@ -109,7 +109,7 @@ a {
 
 @media (min-width: 992px) {
     .masonryGrid {
-        max-width: 80vw;
+        max-width: 80%;
         justify-self: center;
     }
 }

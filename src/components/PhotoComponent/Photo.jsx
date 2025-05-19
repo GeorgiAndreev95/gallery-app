@@ -69,7 +69,6 @@ function Photo({ photos }) {
                                 ${photo.urls.thumb} 200w,
                                 ${photo.urls.small} 400w,
                                 ${photo.urls.regular} 1080w,
-                                ${photo.urls.full} 1920w
                                 `}
                             sizes="(max-width: 767px) 100vw,
                                     (min-width: 768px) 50vw,

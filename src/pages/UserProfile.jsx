@@ -52,7 +52,9 @@ function UserProfile() {
     useEffect(() => {
         const handleScroll = () => {
             if (
-                window.innerHeight + document.documentElement.scrollTop + 900 >=
+                window.innerHeight +
+                    document.documentElement.scrollTop +
+                    1500 >=
                     document.documentElement.offsetHeight &&
                 !isLoading &&
                 hasMore

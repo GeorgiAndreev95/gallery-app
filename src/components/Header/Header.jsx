@@ -1,6 +1,5 @@
 import { useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
-import { useTranslation } from "react-i18next";
 import { useNavigate, useLocation } from "react-router";
 
 import classes from "./Header.module.css";
@@ -12,7 +11,6 @@ import {
 } from "../../slices/photosSlice";
 
 function Header({ isVisible }) {
-    const { t } = useTranslation();
     const dispatch = useDispatch();
     const inputRef = useRef();
     const navigate = useNavigate();
@@ -76,7 +74,7 @@ function Header({ isVisible }) {
                 <input
                     type="text"
                     name="search"
-                    placeholder={t("inputPlaceholder")}
+                    placeholder="Search images"
                     className={classes.searchBox}
                     autoComplete="off"
                     required
