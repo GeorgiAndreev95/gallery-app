@@ -1,7 +1,12 @@
 import { useCallback, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router";
 
-import { getUserPhotos, getUserProfile } from "../services/galleryService";
+import {
+    getUserLikedPhotos,
+    getUserPhotos,
+    getUserProfile,
+} from "../services/galleryService";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 import UserSkeleton from "../components/SkeletonLoading/UserSkeleton";
 import UserBio from "../components/UserBio/UserBio";
@@ -13,10 +18,17 @@ function UserProfile() {
 
     const [user, setUser] = useState(null);
     const [photos, setPhotos] = useState([]);
+    const [likedPhotos, setLikedPhotos] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
-    const [initialLoad, setInitialLoad] = useState(true);
+    const [isLikedLoading, setIsLikedLoading] = useState(true);
     const [page, setPage] = useState(1);
+    const [likedPage, setLikedPage] = useState(1);
     const [hasMore, setHasMore] = useState(true);
+    const [likedHasMore, setLikedHasMore] = useState(true);
+    const [initialLoad, setInitialLoad] = useState(true);
+
+    const selected = useSelector((state) => state.photos.selected);
+    const displayedPhotos = selected === "User Photos" ? photos : likedPhotos;
 
     console.log(user);
 
@@ -24,11 +36,10 @@ function UserProfile() {
         try {
             setIsLoading(true);
             const userPhotosResponse = await getUserPhotos(username, page);
-            if (userPhotosResponse.length === 0) {
+            if (userPhotosResponse.length < 20) {
                 setHasMore(false);
-            } else {
-                setPhotos((prev) => [...prev, ...userPhotosResponse]);
             }
+            setPhotos((prev) => [...prev, ...userPhotosResponse]);
         } catch (err) {
             console.error("Error fetching photos", err);
         } finally {
@@ -36,6 +47,24 @@ function UserProfile() {
             setInitialLoad(false);
         }
     }, [username, page]);
+
+    const fetchUserLikedPhotos = useCallback(async () => {
+        try {
+            setIsLikedLoading(true);
+            const likedPhotosResponse = await getUserLikedPhotos(
+                username,
+                likedPage
+            );
+            if (likedPhotosResponse.length < 20) {
+                setLikedHasMore(false);
+            }
+            setLikedPhotos((prev) => [...prev, ...likedPhotosResponse]);
+        } catch (err) {
+            console.error("Error fetching liked photos", err);
+        } finally {
+            setIsLikedLoading(false);
+        }
+    }, [username, likedPage]);
 
     useEffect(() => {
         const fetchUserData = async () => {
@@ -50,22 +79,37 @@ function UserProfile() {
     }, [fetchUserPhotos]);
 
     useEffect(() => {
+        fetchUserLikedPhotos();
+    }, [fetchUserLikedPhotos]);
+
+    console.log(likedPhotos);
+
+    useEffect(() => {
         const handleScroll = () => {
-            if (
+            const nearBottom =
                 window.innerHeight +
                     document.documentElement.scrollTop +
                     1500 >=
-                    document.documentElement.offsetHeight &&
-                !isLoading &&
-                hasMore
-            ) {
+                document.documentElement.offsetHeight;
+
+            if (!nearBottom) return;
+
+            if (selected === "User Photos" && !isLoading && hasMore) {
                 setPage((prev) => prev + 1);
+            }
+
+            if (
+                selected === "Liked Photos" &&
+                !isLikedLoading &&
+                likedHasMore
+            ) {
+                setLikedPage((prev) => prev + 1);
             }
         };
 
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
-    }, [isLoading, hasMore]);
+    }, [selected, isLoading, hasMore, isLikedLoading, likedHasMore]);
 
     return (
         <>
@@ -83,12 +127,9 @@ function UserProfile() {
                             </div>
                         ) : (
                             <>
-                                <UserPhoto photos={photos} />
-                                {isLoading && !initialLoad && (
-                                    <LoadingSpinner />
-                                )}
-
-                                {!hasMore && !isLoading && (
+                                {displayedPhotos.length === 0 &&
+                                !isLoading &&
+                                !isLikedLoading ? (
                                     <p
                                         style={{
                                             fontWeight: "500",
@@ -97,8 +138,34 @@ function UserProfile() {
                                             marginBottom: "20px",
                                         }}
                                     >
-                                        No more photos
+                                        {selected === "User Photos"
+                                            ? "This user hasn't uploaded any photos yet."
+                                            : "This user hasn't liked any photos yet."}
                                     </p>
+                                ) : (
+                                    <>
+                                        <UserPhoto photos={displayedPhotos} />
+                                        {(isLoading || isLikedLoading) &&
+                                            !initialLoad && <LoadingSpinner />}
+
+                                        {((selected === "User Photos" &&
+                                            !hasMore &&
+                                            !isLoading) ||
+                                            (selected === "Likes" &&
+                                                !likedHasMore &&
+                                                !isLikedLoading)) && (
+                                            <p
+                                                style={{
+                                                    fontWeight: "500",
+                                                    textAlign: "center",
+                                                    marginTop: "20px",
+                                                    marginBottom: "20px",
+                                                }}
+                                            >
+                                                No more photos
+                                            </p>
+                                        )}
+                                    </>
                                 )}
                             </>
                         )}

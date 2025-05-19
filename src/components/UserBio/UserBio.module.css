@@ -129,14 +129,46 @@
 }
 
 .userPhotos {
+    display: flex;
     border-bottom: 1px solid rgb(189, 189, 189);
 }
 
-.userPhotos p {
-    padding: 15px;
+.tabButton {
+    display: flex;
+    align-items: center;
+    color: #767676;
+    padding: 10px;
+    margin: 0 10px;
     font-size: 15px;
     font-weight: 450;
 }
+
+.tabButton:hover,
+.tabButton:hover svg {
+    color: black;
+}
+
+.tabButtonActive {
+    color: black;
+}
+
+.activeTabIndicator {
+    width: 85%;
+    margin: 0 auto;
+    border: 2px solid black;
+    border-radius: 8px;
+}
+
+.tabIcon {
+    margin-right: 8px;
+    color: #d1d1d1;
+}
+
+.tabIconActive {
+    color: black;
+}
+
+/* Scroll to top button */
 
 .scrollTopWrapper {
     position: fixed;

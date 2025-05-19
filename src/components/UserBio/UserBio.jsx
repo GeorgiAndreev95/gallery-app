@@ -1,21 +1,28 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import { motion, AnimatePresence } from "motion/react";
 import { FaXTwitter, FaLocationDot } from "react-icons/fa6";
+import { MdPhoto } from "react-icons/md";
 import {
     FaGlobeAmericas,
     FaInstagram,
     FaCheckCircle,
+    FaHeart,
     FaLink,
 } from "react-icons/fa";
 
-import { setCurrentPage, setResultPhotos } from "../../slices/photosSlice";
+import {
+    setCurrentPage,
+    setResultPhotos,
+    setSelected,
+} from "../../slices/photosSlice";
 import classes from "./UserBio.module.css";
 
 function UserBio({ user }) {
     const dispatch = useDispatch();
     const navigate = useNavigate();
+    const selected = useSelector((state) => state.photos.selected);
     const [showDropdown, setShowDropdown] = useState(false);
     const [showScrollTop, setShowScrollTop] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -33,6 +40,7 @@ function UserBio({ user }) {
         location,
         tags,
         total_photos,
+        total_likes,
     } = user;
 
     useEffect(() => {
@@ -52,6 +60,14 @@ function UserBio({ user }) {
         dispatch(setCurrentPage(1));
         dispatch(setResultPhotos([]));
         navigate(`/photos/${tag}`);
+    };
+
+    const handlePhotosClick = () => {
+        dispatch(setSelected("User Photos"));
+    };
+
+    const handleLikedClick = () => {
+        dispatch(setSelected("Likes"));
     };
 
     const toggleDropdown = () => {
@@ -253,7 +269,58 @@ function UserBio({ user }) {
             </AnimatePresence>
 
             <div className={classes.userPhotos}>
-                <p>User Photos {`(${total_photos})`}</p>
+                <div>
+                    <button
+                        onClick={handlePhotosClick}
+                        className={
+                            selected === "User Photos"
+                                ? `${classes.tabButton} ${classes.tabButtonActive}`
+                                : classes.tabButton
+                        }
+                    >
+                        <MdPhoto
+                            size={22}
+                            className={
+                                selected === "User Photos"
+                                    ? `${classes.tabIcon} ${classes.tabIconActive}`
+                                    : classes.tabIcon
+                            }
+                        />{" "}
+                        Photos {`(${total_photos})`}
+                    </button>
+                    {selected === "User Photos" && (
+                        <motion.div
+                            layoutId="tab-indicator"
+                            className={classes.activeTabIndicator}
+                        />
+                    )}
+                </div>
+                <div>
+                    <button
+                        onClick={handleLikedClick}
+                        className={
+                            selected === "Likes"
+                                ? `${classes.tabButton} ${classes.tabButtonActive}`
+                                : classes.tabButton
+                        }
+                    >
+                        <FaHeart
+                            size={22}
+                            className={
+                                selected === "Likes"
+                                    ? `${classes.tabIcon} ${classes.tabIconActive}`
+                                    : classes.tabIcon
+                            }
+                        />{" "}
+                        Likes {`(${total_likes})`}
+                    </button>
+                    {selected === "Likes" && (
+                        <motion.div
+                            layoutId="tab-indicator"
+                            className={classes.activeTabIndicator}
+                        />
+                    )}
+                </div>
             </div>
         </>
     );

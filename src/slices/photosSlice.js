@@ -6,6 +6,7 @@ const initialState = {
     resultPhoto: {},
     currentPage: 1,
     totalPages: 500,
+    selected: "User Photos",
 };
 
 export const photosSlice = createSlice({
@@ -27,6 +28,9 @@ export const photosSlice = createSlice({
         setTotalPages: (state, action) => {
             state.totalPages = action.payload;
         },
+        setSelected: (state, action) => {
+            state.selected = action.payload;
+        },
     },
 });
 
@@ -36,6 +40,7 @@ export const {
     setResultPhoto,
     setCurrentPage,
     setTotalPages,
+    setSelected,
 } = photosSlice.actions;
 
 export default photosSlice.reducer;
