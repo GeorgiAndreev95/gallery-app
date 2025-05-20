@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { decode } from "blurhash";
 
+import classes from "./BlurHashImage.module.css";
+
 function BlurHashImage({ hash, width = 32, height = 32 }) {
     const canvasRef = useRef();
 
@@ -16,17 +18,10 @@ function BlurHashImage({ hash, width = 32, height = 32 }) {
 
     return (
         <canvas
+            className={classes.blurHashImage}
             ref={canvasRef}
             width={width}
             height={height}
-            style={{
-                width: "100%",
-                height: "100%",
-                position: "absolute",
-                inset: 0,
-                objectFit: "cover",
-                zIndex: 1,
-            }}
         />
     );
 }

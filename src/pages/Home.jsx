@@ -43,12 +43,8 @@ const Home = React.memo(function Home() {
 
     return (
         <>
-            {isLoading ? (
-                <div>
-                    {Array.from({ length: 10 }).map((_, index) => (
-                        <SkeletonLoading key={index} />
-                    ))}
-                </div>
+            {isLoading && !photos ? (
+                <SkeletonLoading />
             ) : (
                 <Photo photos={photos} />
             )}

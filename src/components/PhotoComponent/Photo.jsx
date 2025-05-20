@@ -23,40 +23,27 @@ function Photo({ photos }) {
     return (
         <div className={classes.bodyWrapper}>
             {photos.map((photo) => (
-                <div
-                    key={photo.id}
-                    className={classes.imageContainer}
-                    style={{
-                        aspectRatio: `${photo.width} / ${photo.height}`,
-                    }}
-                >
-                    <div
-                        className={classes.mainImage}
-                        style={{
-                            position: "relative",
-                            overflow: "hidden",
-                        }}
-                    >
-                        <div className={classes.author}>
-                            <img
-                                onClick={() =>
-                                    handleUserClick(photo.user.username)
-                                }
-                                srcSet={`
+                <div key={photo.id} className={classes.photoContainer}>
+                    <div className={classes.author}>
+                        <img
+                            onClick={() => handleUserClick(photo.user.username)}
+                            srcSet={`
                                 ${photo.user.profile_image.small} 32w, 
                                 ${photo.user.profile_image.medium} 64w, 
                                 ${photo.user.profile_image.large} 128w
                                 `}
-                            />
-                            <p
-                                onClick={() =>
-                                    handleUserClick(photo.user.username)
-                                }
-                            >
-                                {photo.user.name}
-                            </p>
-                        </div>
+                        />
+                        <p onClick={() => handleUserClick(photo.user.username)}>
+                            {photo.user.name}
+                        </p>
+                    </div>
 
+                    <div
+                        className={classes.imageContainer}
+                        style={{
+                            aspectRatio: `${photo.width} / ${photo.height}`,
+                        }}
+                    >
                         {!isLoaded && (
                             <BlurHashImage
                                 hash={photo.blur_hash}
@@ -75,6 +62,7 @@ function Photo({ photos }) {
                                     100vw"
                             alt={photo.alt_description || "Photo"}
                             onLoad={() => setIsLoaded(true)}
+                            fetchPriority="high"
                             style={{
                                 inset: 0,
                                 opacity: isLoaded ? 1 : 0,

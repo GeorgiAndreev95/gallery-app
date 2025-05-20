@@ -1,6 +1,17 @@
-.skeletonContainer {
-    margin-top: 16px;
-    margin-bottom: 48px;
+.skeletonMasonryGrid {
+    display: flex;
+    width: auto;
+}
+
+.skeletonMasonryColumn {
+    background-clip: padding-box;
+}
+
+.skeletonCard {
+    margin-bottom: 16px;
+    break-inside: avoid;
+    display: flex;
+    flex-direction: column;
 }
 
 .authorSkeleton {
@@ -28,6 +39,31 @@
 
 .skeletonPhoto {
     width: 100%;
-    height: 260px;
     background: #e7e7e7;
+    transition: height 0.3s ease;
+}
+
+@media (min-width: 768px) {
+    .skeletonMasonryGrid {
+        padding: 0 12px;
+    }
+
+    .skeletonMasonryColumn {
+        margin: 0 10px;
+    }
+
+    .authorSkeleton {
+        display: none;
+    }
+
+    .skeletonPhoto {
+        border-radius: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .skeletonMasonryGrid {
+        max-width: 80vw;
+        margin: 0 auto;
+    }
 }

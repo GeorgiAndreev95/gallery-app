@@ -39,8 +39,6 @@ function UserBio({ user }) {
         for_hire,
         location,
         tags,
-        total_photos,
-        total_likes,
     } = user;
 
     useEffect(() => {
@@ -286,7 +284,7 @@ function UserBio({ user }) {
                                     : classes.tabIcon
                             }
                         />{" "}
-                        Photos {`(${total_photos})`}
+                        User Photos
                     </button>
                     {selected === "User Photos" && (
                         <motion.div
@@ -312,7 +310,7 @@ function UserBio({ user }) {
                                     : classes.tabIcon
                             }
                         />{" "}
-                        Likes {`(${total_likes})`}
+                        Likes
                     </button>
                     {selected === "Likes" && (
                         <motion.div
