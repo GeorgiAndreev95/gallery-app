@@ -60,6 +60,12 @@ function UserBio({ user }) {
         navigate(`/photos/${tag}`);
     };
 
+    const handleLocationClick = (location) => {
+        dispatch(setCurrentPage(1));
+        dispatch(setResultPhotos([]));
+        navigate(`/photos/${location}`);
+    };
+
     const handlePhotosClick = () => {
         dispatch(setSelected("User Photos"));
     };
@@ -74,75 +80,84 @@ function UserBio({ user }) {
 
     return (
         <>
-            <div className={classes.userProfile}>
-                <div className={classes.userInfo}>
-                    <div className={classes.imgWrapper}>
-                        <img
-                            className={classes.profileImage}
-                            src={profile_image.large}
-                            alt={name}
-                            onLoad={() => setIsLoaded(true)}
-                            style={{
-                                inset: 0,
-                                opacity: isLoaded ? 1 : 0,
-                                background: "#e7e7e7",
-                                transition: "opacity 0.4s ease-in-out",
-                                zIndex: 2,
-                            }}
-                        />
-                    </div>
+            <div className={classes.userBioProfile}>
+                <div className={classes.imgWrapper}>
+                    <img
+                        className={classes.profileImage}
+                        src={profile_image.large}
+                        alt={name}
+                        onLoad={() => setIsLoaded(true)}
+                        style={{
+                            inset: 0,
+                            opacity: isLoaded ? 1 : 0,
+                            background: "#e7e7e7",
+                            transition: "opacity 0.4s ease-in-out",
+                            zIndex: 2,
+                        }}
+                    />
+                </div>
 
-                    <div className={classes.infoContainer}>
-                        <h2>{name}</h2>
-                        <p className={classes.username}>@{username}</p>
-                        {bio && <p className={classes.bio}>{bio}</p>}
+                <div className={classes.infoContainer}>
+                    <h2>{name}</h2>
+                    <p className={classes.username}>@{username}</p>
+                    {bio && <p className={classes.bio}>{bio}</p>}
 
-                        <div className={classes.additionalInfo}>
-                            {for_hire === true && (
-                                <div className={classes.forHire}>
-                                    <span className={classes.icon}>
-                                        <FaCheckCircle
-                                            size={16}
-                                            color="#007fff"
-                                        />
-                                        <span className={classes.forHiteText}>
-                                            Available for hire
-                                        </span>
+                    <div className={classes.additionalInfo}>
+                        {for_hire === true && (
+                            <div className={classes.forHire}>
+                                <span className={classes.icon}>
+                                    <FaCheckCircle size={16} color="#007fff" />
+                                    <span className={classes.forHiteText}>
+                                        Available for hire
                                     </span>
+                                </span>
 
-                                    <p></p>
-                                </div>
-                            )}
-                            {location && (
-                                <div className={classes.infoContainer}>
+                                <p></p>
+                            </div>
+                        )}
+                        {location && (
+                            <div className={classes.locationContainer}>
+                                <button
+                                    onClick={() =>
+                                        handleLocationClick(location)
+                                    }
+                                >
                                     <span className={classes.infoIcon}>
                                         <FaLocationDot
                                             size={16}
-                                            color="#767676"
+                                            className={classes.locationIcon}
                                         />
                                         <span className={classes.infoText}>
                                             {location}
                                         </span>
                                     </span>
-                                </div>
-                            )}
+                                </button>
+                            </div>
+                        )}
 
-                            {hasSocialLinks && (
-                                <div className={classes.dropdownWrapper}>
-                                    <button
-                                        className={classes.infoWrapper}
-                                        onClick={toggleDropdown}
-                                    >
-                                        <span className={classes.infoIcon}>
-                                            <FaLink size={16} color="#767676" />
-                                            <span className={classes.infoText}>
-                                                {`Connect with ${first_name} ⯆`}
-                                            </span>
+                        {hasSocialLinks && (
+                            <div className={classes.dropdownWrapper}>
+                                <button onClick={toggleDropdown}>
+                                    <span className={classes.infoIcon}>
+                                        <FaLink
+                                            size={16}
+                                            className={classes.dropdownIcon}
+                                        />
+                                        <span className={classes.infoText}>
+                                            {`Connect with ${first_name} ⯆`}
                                         </span>
-                                    </button>
+                                    </span>
+                                </button>
 
-                                    <AnimatePresence>
-                                        {showDropdown && (
+                                <AnimatePresence>
+                                    {showDropdown && (
+                                        <>
+                                            <div
+                                                className={
+                                                    classes.dropdownBackdrop
+                                                }
+                                                onClick={toggleDropdown}
+                                            />
                                             <motion.div
                                                 className={classes.dropdownMenu}
                                                 initial={{
@@ -219,31 +234,31 @@ function UserBio({ user }) {
                                                     )}
                                                 </ul>
                                             </motion.div>
-                                        )}
-                                    </AnimatePresence>
-                                </div>
-                            )}
-                        </div>
-
-                        {tags.custom.length > 0 && (
-                            <div className={classes.interests}>
-                                <p>Interests</p>
-                                <div className={classes.tags}>
-                                    {tags.custom.map((tag, index) => (
-                                        <button
-                                            key={index}
-                                            className={classes.tagButton}
-                                            onClick={() =>
-                                                handleTagClick(tag.title)
-                                            }
-                                        >
-                                            {tag.title}
-                                        </button>
-                                    ))}
-                                </div>
+                                        </>
+                                    )}
+                                </AnimatePresence>
                             </div>
                         )}
                     </div>
+
+                    {tags.custom.length > 0 && (
+                        <div className={classes.interests}>
+                            <p>Interests</p>
+                            <div className={classes.tags}>
+                                {tags.custom.map((tag, index) => (
+                                    <button
+                                        key={index}
+                                        className={classes.tagButton}
+                                        onClick={() =>
+                                            handleTagClick(tag.title)
+                                        }
+                                    >
+                                        {tag.title}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+                    )}
                 </div>
             </div>
 

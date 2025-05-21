@@ -1,27 +1,20 @@
-.userProfile {
+.userBioProfile {
     display: flex;
     flex-direction: column;
     padding: 15px;
-    /* max-width: 1000px; */
 }
 
 .imgWrapper {
-    height: 128px;
-    width: 128px;
-    border-radius: 50%;
+    height: 130px;
+    width: 130px;
     background: #e7e7e7;
     margin: 1rem 0;
-}
-
-.userInfo img {
     border: 1px solid #e7e7e7;
-    height: 128px;
-    width: 128px;
-    background: #e7e7e7;
     border-radius: 50%;
+    overflow: hidden;
 }
 
-.userInfo h2 {
+.infoContainer h2 {
     font-size: 30px;
     line-height: 30px;
 }
@@ -71,8 +64,12 @@
     background: #eee;
     color: #767676;
     border-radius: 4px;
-    padding: 2px 8px;
+    padding: 3px 10px;
     font-size: 15px;
+}
+
+.tagButton:hover {
+    background-color: #e1e1e1;
 }
 
 .infoIcon {
@@ -87,7 +84,25 @@
 
 .dropdownWrapper {
     position: relative;
-    /* display: inline-block; */
+}
+
+.dropdownIcon,
+.locationIcon {
+    color: #767676;
+}
+
+.dropdownWrapper:hover .infoText,
+.dropdownWrapper:hover .dropdownIcon,
+.locationContainer:hover .infoText,
+.locationContainer:hover .locationIcon {
+    color: #414141;
+}
+
+.dropdownBackdrop {
+    position: fixed;
+    inset: 0;
+    color: transparent;
+    z-index: 1000;
 }
 
 .dropdownMenu {
@@ -98,7 +113,7 @@
     background-color: white;
     border: 1px solid #ccc;
     border-radius: 4px;
-    z-index: 1000;
+    z-index: 1001;
     min-width: 160px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
     transform-origin: top;
@@ -216,10 +231,11 @@
 }
 
 @media (min-width: 768px) {
-    .userInfo {
+    .userBioProfile {
         display: flex;
+        flex-direction: row;
         justify-content: center;
-        align-self: center;
+        margin: 0 auto;
         max-width: 1000px;
     }
 
@@ -229,7 +245,7 @@
         min-height: 128px;
     }
 
-    .userInfo h2 {
+    .infoContainer h2 {
         font-size: 35px;
     }
 

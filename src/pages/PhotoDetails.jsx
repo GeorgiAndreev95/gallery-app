@@ -6,6 +6,7 @@ import { getSinglePhoto } from "../services/galleryService";
 import { setResultPhoto } from "../slices/photosSlice";
 import SkeletonLoading from "../components/SkeletonLoading/SkeletonLoading";
 import DetailedPhoto from "../components/PhotoDetails/DetailedPhoto";
+import DetailedSkeleton from "../components/SkeletonLoading/DetailedSkeleton";
 
 function PhotoDetails() {
     const [isLoading, setIsLoading] = useState(true);
@@ -31,7 +32,9 @@ function PhotoDetails() {
     }, [id, dispatch]);
 
     return (
-        <>{isLoading ? <SkeletonLoading /> : <DetailedPhoto photo={photo} />}</>
+        <>
+            {isLoading ? <DetailedSkeleton /> : <DetailedPhoto photo={photo} />}
+        </>
     );
 }
 

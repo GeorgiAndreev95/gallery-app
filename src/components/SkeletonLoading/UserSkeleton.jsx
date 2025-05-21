@@ -11,12 +11,15 @@ function UserSkeleton() {
 
     return (
         <div className={classes.userProfile}>
-            <div className={classes.userInfo}>
+            <div className={classes.imgSkeleton}>
                 <motion.div
                     className={classes.profileImage}
                     animate={{ opacity: [1, 0.4, 1] }}
                     transition={pulseTransition}
                 />
+            </div>
+
+            <div className={classes.infoSkeleton}>
                 <motion.h2
                     className={classes.userFullName}
                     animate={{ opacity: [1, 0.4, 1] }}
@@ -50,23 +53,23 @@ function UserSkeleton() {
                         transition={pulseTransition}
                     />
                 </div>
-            </div>
 
-            <div className={classes.interests}>
-                <motion.div
-                    className={classes.interestsLable}
-                    animate={{ opacity: [1, 0.4, 1] }}
-                    transition={pulseTransition}
-                />
-                <div className={classes.tags}>
-                    {Array.from({ length: 4 }).map((tag, index) => (
-                        <motion.div
-                            key={index}
-                            className={classes.tagButton}
-                            animate={{ opacity: [1, 0.4, 1] }}
-                            transition={pulseTransition}
-                        />
-                    ))}
+                <div className={classes.interests}>
+                    <motion.div
+                        className={classes.interestsLable}
+                        animate={{ opacity: [1, 0.4, 1] }}
+                        transition={pulseTransition}
+                    />
+                    <div className={classes.tags}>
+                        {Array.from({ length: 4 }).map((tag, index) => (
+                            <motion.div
+                                key={index}
+                                className={classes.tagButton}
+                                animate={{ opacity: [1, 0.4, 1] }}
+                                transition={pulseTransition}
+                            />
+                        ))}
+                    </div>
                 </div>
             </div>
         </div>

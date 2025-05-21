@@ -20,6 +20,7 @@
     align-items: center;
     gap: 8px;
     height: 48px;
+    cursor: pointer;
 }
 
 .title h1 {

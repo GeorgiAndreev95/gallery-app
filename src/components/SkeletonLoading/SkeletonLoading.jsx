@@ -1,5 +1,6 @@
-import Masonry from "react-masonry-css";
 import { motion } from "motion/react";
+import Masonry from "react-masonry-css";
+
 import classes from "./SkeletonLoading.module.css";
 
 function SkeletonLoading() {

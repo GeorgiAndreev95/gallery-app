@@ -73,3 +73,18 @@
     border-radius: 4px;
     font-size: 15px;
 }
+
+@media (min-width: 768px) {
+    .userProfile {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        max-width: 1000px;
+    }
+
+    .profileImage {
+        margin: 0 20px;
+        min-width: 128px;
+        min-height: 128px;
+    }
+}

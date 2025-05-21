@@ -1,4 +1,4 @@
-.imageContainer {
+.detailedImageContainer {
     margin-top: 16px;
     margin-bottom: 48px;
 }
@@ -21,7 +21,7 @@
     font-weight: 500;
 }
 
-.mainImage,
+.mainDetailedImage,
 .author img {
     background-color: #e7e7e7;
     animation: backgroundPulse 1.5s infinite ease-in-out;

@@ -1,0 +1,85 @@
+.detailedSkeletonContainer {
+    margin-top: 16px;
+    margin-bottom: 48px;
+}
+
+.authorSkeleton {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.authorImage {
+    height: 34px;
+    width: 34px;
+    border-radius: 50%;
+    background: #e7e7e7;
+    border: 1px solid #e7e7e7;
+}
+
+.authorName {
+    height: 16px;
+    width: 150px;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.imageSkeleton {
+    height: 300px;
+    width: 100%;
+    background: #e7e7e7;
+}
+
+.detailsSkeleton {
+    display: flex;
+    flex-direction: column;
+    padding: 14px;
+}
+
+.statsSkeleton {
+    display: flex;
+    align-items: center;
+    gap: 45px;
+}
+
+.value {
+    height: 20px;
+    width: 70px;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.descriptionSkeleton {
+    margin-top: 16px;
+    height: 60px;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.moreInfoSkeleton {
+    display: flex;
+    flex-direction: column;
+    margin-top: 1rem;
+    row-gap: 6px;
+}
+
+.info {
+    height: 20px;
+    width: 70%;
+    background: #e7e7e7;
+    border-radius: 12px;
+}
+
+.tagsSkeleton {
+    display: flex;
+    margin-top: 2rem;
+    gap: 8px;
+}
+
+.tagSkeleton {
+    height: 27px;
+    background: #e7e7e7;
+    border-radius: 4px;
+}

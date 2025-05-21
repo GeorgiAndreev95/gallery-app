@@ -66,7 +66,6 @@ function DetailedPhoto({ photo }) {
 
     return (
         <div
-            key={photo.id}
             className={classes.detailedImageContainer}
             style={{
                 width: "100%",

@@ -7,9 +7,9 @@
     margin-top: 16px;
     margin-bottom: 48px;
     break-inside: avoid;
-
     position: relative;
     overflow: hidden;
+    cursor: zoom-in;
 }
 
 .author {
@@ -35,7 +35,6 @@
 .imageContainer {
     position: relative;
     width: 100%;
-    cursor: pointer;
     animation: backgroundPulse 1.5s infinite ease-in-out;
 }
 
@@ -53,7 +52,7 @@
 
 @media (min-width: 768px) {
     .bodyWrapper {
-        padding: 0 20px;
+        padding: 0 20px 20px 20px;
         margin: 0 auto;
         column-count: 2;
         column-gap: 20px;
@@ -78,6 +77,7 @@
         transform: translateY(10px);
         transition: opacity 0.3s ease, transform 0.3s ease;
         cursor: pointer;
+        z-index: 2;
     }
 
     .author img {
@@ -93,7 +93,7 @@
         margin: 0;
     }
 
-    .photoContainer img {
+    .image {
         border-radius: 8px;
     }
 

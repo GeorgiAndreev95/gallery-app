@@ -1,16 +1,13 @@
-.userImageContainer {
+.userPhotoContainer {
     break-inside: avoid;
     width: 100%;
-}
-
-.mainUserImage {
-    width: 100%;
     position: relative;
+    overflow: hidden;
+    cursor: zoom-in;
 }
 
-.mainUserImage img {
+.userPhotoContainer img {
     width: 100%;
-    /* border-radius: 8px; */
     background-color: #e7e7e7;
 }
 
@@ -33,6 +30,24 @@
 .userAuthor p {
     font-weight: 500;
     font-size: 16px;
+}
+
+.userImageContainer {
+    position: relative;
+    width: 100%;
+    animation: backgroundPulse 1.5s infinite ease-in-out;
+}
+
+@keyframes backgroundPulse {
+    0% {
+        background-color: #e7e7e7;
+    }
+    50% {
+        background-color: #d0d0d0;
+    }
+    100% {
+        background-color: #e7e7e7;
+    }
 }
 
 @media (min-width: 768px) {
@@ -67,12 +82,12 @@
         margin: 0;
     }
 
-    .mainUserImage img {
+    .userPhotoContainer img {
         border-radius: 8px;
         cursor: zoom-in;
     }
 
-    .mainUserImage:hover .userAuthor {
+    .userPhotoContainer:hover .userAuthor {
         opacity: 1;
         transform: translateY(0);
     }

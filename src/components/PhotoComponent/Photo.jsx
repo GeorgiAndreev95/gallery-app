@@ -52,6 +52,7 @@ function Photo({ photos }) {
                             />
                         )}
                         <img
+                            className={classes.image}
                             srcSet={`
                                 ${photo.urls.thumb} 200w,
                                 ${photo.urls.small} 400w,

@@ -34,35 +34,28 @@ function UserPhoto({ photos }) {
             columnClassName="masonryGridColumn"
         >
             {photos.map((photo) => (
-                <div key={photo.id} className={classes.userImageContainer}>
-                    <div
-                        className={classes.mainUserImage}
-                        style={{
-                            position: "relative",
-                            overflow: "hidden",
-                        }}
-                    >
-                        <div className={classes.userAuthor}>
-                            <img
-                                onClick={() =>
-                                    handleUserClick(photo.user.username)
-                                }
-                                srcSet={`
+                <div key={photo.id} className={classes.userPhotoContainer}>
+                    <div className={classes.userAuthor}>
+                        <img
+                            onClick={() => handleUserClick(photo.user.username)}
+                            srcSet={`
                                 ${photo.user.profile_image.small} 32w, 
                                 ${photo.user.profile_image.medium} 64w, 
                                 ${photo.user.profile_image.large} 128w
                                 `}
-                                alt={photo.user.name}
-                            />
-                            <p
-                                onClick={() =>
-                                    handleUserClick(photo.user.username)
-                                }
-                            >
-                                {photo.user.name}
-                            </p>
-                        </div>
+                            alt={photo.user.name}
+                        />
+                        <p onClick={() => handleUserClick(photo.user.username)}>
+                            {photo.user.name}
+                        </p>
+                    </div>
 
+                    <div
+                        className={classes.userImageContainer}
+                        style={{
+                            aspectRatio: `${photo.width} / ${photo.height}`,
+                        }}
+                    >
                         {!loadedPhotos[photo.id] && (
                             <BlurHashImage
                                 hash={photo.blur_hash}
