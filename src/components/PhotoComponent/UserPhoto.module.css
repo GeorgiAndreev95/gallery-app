@@ -34,6 +34,7 @@
 
 .userImageContainer {
     position: relative;
+    border-radius: 8px;
     width: 100%;
     animation: backgroundPulse 1.5s infinite ease-in-out;
 }

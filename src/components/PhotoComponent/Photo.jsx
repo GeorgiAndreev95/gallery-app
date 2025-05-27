@@ -17,7 +17,7 @@ function Photo({ photos }) {
     };
 
     const handleUserClick = (username) => {
-        navigate(`/${username}`);
+        navigate(`/users/${username}`);
     };
 
     return (

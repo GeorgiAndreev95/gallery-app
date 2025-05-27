@@ -1,0 +1,10 @@
+.pageNotFound {
+    padding: 2rem;
+    text-align: center;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}

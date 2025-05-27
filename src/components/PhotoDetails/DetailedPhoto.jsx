@@ -32,7 +32,7 @@ function DetailedPhoto({ photo }) {
     };
 
     const handleUserClick = (username) => {
-        navigate(`/${username}`);
+        navigate(`/users/${username}`);
     };
 
     const toggleModal = () => {

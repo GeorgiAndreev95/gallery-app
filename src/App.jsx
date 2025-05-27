@@ -2,10 +2,11 @@ import { useState, useEffect } from "react";
 import { Outlet, Routes, Route } from "react-router";
 
 import Home from "./pages/Home";
-import Header from "./components/Header/Header";
 import Photos from "./pages/Photos";
 import PhotoDetails from "./pages/PhotoDetails";
 import UserProfile from "./pages/UserProfile";
+import Header from "./components/Header/Header";
+import PageNotFound from "./components/PageNotFound/PageNotFound";
 
 function Layout() {
     const [showHeader, setShowHeader] = useState(true);
@@ -58,9 +59,10 @@ function App() {
         <Routes>
             <Route element={<Layout />}>
                 <Route path="/" element={<Home />} />
-                <Route path="/:username" element={<UserProfile />} />
+                <Route path="/users/:username" element={<UserProfile />} />
                 <Route path="photos/:searchTerm" element={<Photos />} />
                 <Route path="details/:id" element={<PhotoDetails />} />
+                <Route path="*" element={<PageNotFound />} />
             </Route>
         </Routes>
     );

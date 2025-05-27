@@ -18,7 +18,7 @@ function UserPhoto({ photos }) {
     };
 
     const handleUserClick = (username) => {
-        navigate(`/${username}`);
+        navigate(`/users/${username}`);
     };
 
     const breakpointColumnsObj = {

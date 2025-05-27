@@ -129,6 +129,10 @@
     font-size: 15px;
 }
 
+.tagButton:hover {
+    background-color: #e1e1e1;
+}
+
 /* Modal code */
 
 .modalOverlay {
