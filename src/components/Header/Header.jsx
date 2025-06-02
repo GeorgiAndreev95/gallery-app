@@ -26,12 +26,14 @@ function Header({ isVisible }) {
 
         navigate(`/photos/${searchValue}`);
         dispatch(setCurrentPage(1));
+        localStorage.setItem("page", 1);
     };
 
     const clickHandler = () => {
         navigate("/");
         dispatch(setResultPhotos([]));
         dispatch(setCurrentPage(1));
+        localStorage.setItem("page", 1);
         dispatch(setTotalPages(500));
         inputRef.current.value = "";
     };

@@ -15,14 +15,18 @@ function PageSelect() {
         (!isSearchRoute || totalPages > 1) && currentPage > 0;
 
     const clickNextHandler = () => {
-        dispatch(setCurrentPage(currentPage + 1));
+        const nextPage = currentPage + 1;
+        dispatch(setCurrentPage(nextPage));
+        localStorage.setItem("page", nextPage);
         window.scrollTo({
             top: 0,
         });
     };
 
     const clickPreviousHandler = () => {
-        dispatch(setCurrentPage(currentPage - 1));
+        const prevPage = currentPage - 1;
+        dispatch(setCurrentPage(prevPage));
+        localStorage.setItem("page", prevPage);
         window.scrollTo({
             top: 0,
         });

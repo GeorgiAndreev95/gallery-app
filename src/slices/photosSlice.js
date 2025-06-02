@@ -1,10 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const navigationEntries = performance.getEntriesByType("navigation");
+const isRestored =
+    navigationEntries.length > 0 &&
+    (navigationEntries[0].type === "reload" ||
+        navigationEntries[0].type === "back_forward");
+
+const page = isRestored ? parseInt(localStorage.getItem("page") || "1", 10) : 1;
+
 const initialState = {
     listPhotos: [],
     resultPhotos: [],
     resultPhoto: {},
-    currentPage: 1,
+    currentPage: page,
     totalPages: 500,
     selected: "User Photos",
 };
