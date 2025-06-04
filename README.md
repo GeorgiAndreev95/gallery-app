@@ -20,6 +20,24 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 
 **The Homepage in Desktop/Tablet/Mobile view**
 
+![Home - desktop](https://github.com/user-attachments/assets/2209e8a3-e3ed-489e-b798-b07ee60b0d37)
+
+![Home - tablet](https://github.com/user-attachments/assets/aea1284c-624c-44cb-ab70-263b61edf7c3)
+
+![Home - mobile](https://github.com/user-attachments/assets/6eb14d76-b570-462a-ad45-22400011c71b)
+
 **The User Profile in Desktop/Tablet/Mobile view**
 
+![User profile - desktop](https://github.com/user-attachments/assets/69109e93-0ac2-4e24-8c72-c943a2866c0f)
+
+![User profile - tablet](https://github.com/user-attachments/assets/75a9b722-4faf-4048-b285-a7aa5d6fdf6b)
+
+![User profile - mobile](https://github.com/user-attachments/assets/6ad238e3-1716-4e6b-a2e8-e4950bef5bd8)
+
 **The Photo Details in Desktop/Tablet/Mobile view**
+
+![Detailed view - desktop](https://github.com/user-attachments/assets/c9f544de-dbb0-4d62-93e9-79d2263b3c8e)
+
+![Detailed view - tablet](https://github.com/user-attachments/assets/0c57cea5-8611-4573-80ea-d1c33496e7fa)
+
+![Detailed view - mobile](https://github.com/user-attachments/assets/31a59e5f-72bb-462d-b5b2-0fe023c2914f)
