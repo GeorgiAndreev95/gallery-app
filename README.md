@@ -20,7 +20,7 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 
 **The Homepage in Desktop/Tablet/Mobile view**
 
-<div align="center">
+<div align="center" style="margin-bottom: 32px;">
   <img src="https://github.com/user-attachments/assets/2209e8a3-e3ed-489e-b798-b07ee60b0d37" alt="Home - desktop" />
   <br />
   <img src="https://github.com/user-attachments/assets/aea1284c-624c-44cb-ab70-263b61edf7c3" alt="Home - tablet" />
@@ -30,7 +30,7 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 
 **The User Profile in Desktop/Tablet/Mobile view**
 
-<div align="center">
+<div align="center" style="margin-bottom: 32px;">
   <img src="https://github.com/user-attachments/assets/69109e93-0ac2-4e24-8c72-c943a2866c0f" alt="User profile - desktop" />
   <br />
   <img src="https://github.com/user-attachments/assets/75a9b722-4faf-4048-b285-a7aa5d6fdf6b" alt="User profile - tablet" />
@@ -40,7 +40,7 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 
 **The Photo Details in Desktop/Tablet/Mobile view**
 
-<div align="center">
+<div align="center" style="margin-bottom: 32px;">
   <img src="https://github.com/user-attachments/assets/c9f544de-dbb0-4d62-93e9-79d2263b3c8e" alt="Detailed view - desktop" />
   <br />
   <img src="https://github.com/user-attachments/assets/0c57cea5-8611-4573-80ea-d1c33496e7fa" alt="Detailed view - tablet" />
