@@ -2,7 +2,7 @@
 
 The goal of this project was to create a photo gallery web application using the Unsplash API and mimicking the look of the Unsplash website.
 
-Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motion
+Utilizes HTML, CSS (CSS Components), JavaScript, React, React Router, Redux Toolkit, Axios, Motion
 
 ### Features
 
