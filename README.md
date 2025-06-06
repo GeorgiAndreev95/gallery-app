@@ -53,3 +53,6 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
   <br />
   <img src="https://github.com/user-attachments/assets/31a59e5f-72bb-462d-b5b2-0fe023c2914f" alt="Detailed view - mobile" />
 </div>
+
+
+![Detailed view - desktop](https://github.com/user-attachments/assets/24b22d4b-3b5b-4d52-8e67-da09e400bcdb)
