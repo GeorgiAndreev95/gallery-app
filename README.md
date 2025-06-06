@@ -47,9 +47,10 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 **The Photo Details in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/2f64c4d3-6bac-4a4f-a98a-a9219aa4c01c" alt="Detailed view - desktop" />
+  <img src="https://github.com/user-attachments/assets/463cd26b-b82f-48bc-b90e-9499330ff331" alt="Detailed view - desktop" />
   <br />
   <img src="https://github.com/user-attachments/assets/e30bb90f-1776-4aa7-806c-b3afbb8a3628" alt="Detailed view - tablet" />
   <br />
   <img src="https://github.com/user-attachments/assets/fc030470-d5b0-450c-829b-e9136e0303de" alt="Detailed view - mobile" />
 </div>
+
