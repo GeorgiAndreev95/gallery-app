@@ -21,11 +21,11 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 **The Homepage in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/2209e8a3-e3ed-489e-b798-b07ee60b0d37" alt="Home - desktop" />
+  <img src="https://github.com/user-attachments/assets/03253fa8-c1b0-4a51-aa7d-e932db83df75" alt="Home - desktop" />
   <br />
-  <img src="https://github.com/user-attachments/assets/aea1284c-624c-44cb-ab70-263b61edf7c3" alt="Home - tablet" />
+  <img src="https://github.com/user-attachments/assets/e59631bd-46b5-40ce-a934-a6c71ba0b55c" alt="Home - tablet" />
   <br />
-  <img src="https://github.com/user-attachments/assets/6eb14d76-b570-462a-ad45-22400011c71b" alt="Home - mobile" />
+  <img src="https://github.com/user-attachments/assets/9310426a-ef4d-443e-a02a-e44340be9a67" alt="Home - mobile" />
 </div>
 
 <br />
@@ -34,11 +34,11 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 **The User Profile in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/69109e93-0ac2-4e24-8c72-c943a2866c0f" alt="User profile - desktop" />
+  <img src="https://github.com/user-attachments/assets/744dc8ce-7692-462b-8676-e825f0deb7fe" alt="User profile - desktop" />
   <br />
-  <img src="https://github.com/user-attachments/assets/75a9b722-4faf-4048-b285-a7aa5d6fdf6b" alt="User profile - tablet" />
+  <img src="https://github.com/user-attachments/assets/7ce2f6e7-1faa-463a-8d35-908d790b3d89" alt="User profile - tablet" />
   <br />
-  <img src="https://github.com/user-attachments/assets/6ad238e3-1716-4e6b-a2e8-e4950bef5bd8" alt="User profile - mobile" />
+  <img src="https://github.com/user-attachments/assets/fd2b1969-3727-4221-9b49-b7a43df7e500" alt="User profile - mobile" />
 </div>
 
 <br />
@@ -47,11 +47,9 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 **The Photo Details in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/c9f544de-dbb0-4d62-93e9-79d2263b3c8e" alt="Detailed view - desktop" />
+  <img src="https://github.com/user-attachments/assets/2f64c4d3-6bac-4a4f-a98a-a9219aa4c01c" alt="Detailed view - desktop" />
   <br />
-  <img src="https://github.com/user-attachments/assets/0c57cea5-8611-4573-80ea-d1c33496e7fa" alt="Detailed view - tablet" />
+  <img src="https://github.com/user-attachments/assets/e30bb90f-1776-4aa7-806c-b3afbb8a3628" alt="Detailed view - tablet" />
   <br />
-  <img src="https://github.com/user-attachments/assets/31a59e5f-72bb-462d-b5b2-0fe023c2914f" alt="Detailed view - mobile" />
+  <img src="https://github.com/user-attachments/assets/fc030470-d5b0-450c-829b-e9136e0303de" alt="Detailed view - mobile" />
 </div>
-
-![Detailed view - desktop](https://github.com/user-attachments/assets/2f64c4d3-6bac-4a4f-a98a-a9219aa4c01c)
