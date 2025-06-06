@@ -21,27 +21,29 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 **The Homepage in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/2209e8a3-e3ed-489e-b798-b07ee60b0d37" alt="Home - desktop" />
-  <img src="https://github.com/user-attachments/assets/aea1284c-624c-44cb-ab70-263b61edf7c3" alt="Home - tablet" />
-  <img src="https://github.com/user-attachments/assets/6eb14d76-b570-462a-ad45-22400011c71b" alt="Home - mobile" />
+  <img src="https://github.com/user-attachments/assets/2209e8a3-e3ed-489e-b798-b07ee60b0d37" alt="Home - desktop" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
+  <br />
+  <img src="https://github.com/user-attachments/assets/aea1284c-624c-44cb-ab70-263b61edf7c3" alt="Home - tablet" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
+  <br />
+  <img src="https://github.com/user-attachments/assets/6eb14d76-b570-462a-ad45-22400011c71b" alt="Home - mobile" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
 </div>
 
 **The User Profile in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/69109e93-0ac2-4e24-8c72-c943a2866c0f" alt="User profile - desktop" />
+  <img src="https://github.com/user-attachments/assets/69109e93-0ac2-4e24-8c72-c943a2866c0f" alt="User profile - desktop" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
   <br />
-  <img src="https://github.com/user-attachments/assets/75a9b722-4faf-4048-b285-a7aa5d6fdf6b" alt="User profile - tablet" />
+  <img src="https://github.com/user-attachments/assets/75a9b722-4faf-4048-b285-a7aa5d6fdf6b" alt="User profile - tablet" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
   <br />
-  <img src="https://github.com/user-attachments/assets/6ad238e3-1716-4e6b-a2e8-e4950bef5bd8" alt="User profile - mobile" />
+  <img src="https://github.com/user-attachments/assets/6ad238e3-1716-4e6b-a2e8-e4950bef5bd8" alt="User profile - mobile" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
 </div>
 
 **The Photo Details in Desktop/Tablet/Mobile view**
 
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/c9f544de-dbb0-4d62-93e9-79d2263b3c8e" alt="Detailed view - desktop" />
+  <img src="https://github.com/user-attachments/assets/c9f544de-dbb0-4d62-93e9-79d2263b3c8e" alt="Detailed view - desktop" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
   <br />
-  <img src="https://github.com/user-attachments/assets/0c57cea5-8611-4573-80ea-d1c33496e7fa" alt="Detailed view - tablet" />
+  <img src="https://github.com/user-attachments/assets/0c57cea5-8611-4573-80ea-d1c33496e7fa" alt="Detailed view - tablet" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
   <br />
-  <img src="https://github.com/user-attachments/assets/31a59e5f-72bb-462d-b5b2-0fe023c2914f" alt="Detailed view - mobile" />
+  <img src="https://github.com/user-attachments/assets/31a59e5f-72bb-462d-b5b2-0fe023c2914f" alt="Detailed view - mobile" style="border: 1px solid #ccc; border-radius: 8px; padding: 4px;" />
 </div>
