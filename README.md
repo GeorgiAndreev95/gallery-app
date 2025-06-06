@@ -29,6 +29,7 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
 </div>
 
 <br />
+<br />
 
 **The User Profile in Desktop/Tablet/Mobile view**
 
@@ -40,6 +41,7 @@ Utilizes HTML, CSS, JavaScript, React, React Router, Redux Toolkit, Axios, Motio
   <img src="https://github.com/user-attachments/assets/6ad238e3-1716-4e6b-a2e8-e4950bef5bd8" alt="User profile - mobile" />
 </div>
 
+<br />
 <br />
 
 **The Photo Details in Desktop/Tablet/Mobile view**
